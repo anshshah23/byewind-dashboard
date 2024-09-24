@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
+import Sidebar from "./components/Sidebar";
 
 const App = () => {
   return (
     <div className="flex items-center justify-center h-screen bg-gray-100">
+      <Sidebar className="self-start" />
       <motion.div
         className="p-10 bg-white rounded-lg shadow-lg"
         initial={{ opacity: 0, x: -50 }}
