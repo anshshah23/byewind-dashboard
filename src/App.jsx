@@ -6,21 +6,14 @@ import Dashboard from "./components/Dashboard";
 
 const App = () => {
   return (
-    <div className="flex flex-col">
+    <div className="flex">
       <Sidebar />
-      {/* <div className="flex items-center w-full justify-center h-screen bg-gray-100">
-        <motion.div
-          className="p-10"
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="flex-1">
-            <h1 className="text-2xl font-bold text-gray-800">Dashboard</h1>
-          </div>
-        </motion.div>
-        </div> */}
-      <Dashboard/>
+
+
+      <div className="px-4 border-x-2 border-gray-200 py-6 flex w-full flex-col h-screen overflow-y-scroll">
+        <Dashboard />
+      </div>
+
       <RightBar />
     </div>
 
