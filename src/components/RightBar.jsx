@@ -1,5 +1,5 @@
 import { div } from "framer-motion/client";
-import { useState } from "react";
+import React from "react";
 import { PiBugBeetle, PiUser, PiBroadcast } from "react-icons/pi";
 import { useAuth } from "./Context";
 
@@ -12,13 +12,15 @@ const notifications = [
 
 export default function Sidebar() {
     const { isRightClose, setIsRightClose, isDarkMode } = useAuth();
+    const [fade, setFade] = React.useState(false);
+
 
     return (
         <div className={`${isRightClose ? 'hidden' : 'block'} w-80 h-screen p-4 font-sans overflow-scroll 
-            ${isDarkMode ? 'bg-gray-900 text-gray-300' : 'bg-white text-gray-700'}`}>
+            ${isDarkMode ? 'bg-zinc-900 text-zinc-300 fade-in' : 'bg-white text-zinc-700 fade-out'} ${fade ? 'fade-out' : ''}`}>
             {/* Notifications Section */}
             <div>
-                <h2 className={`font-bold text-md mb-2 ${isDarkMode ? 'text-gray-100' : 'text-gray-900'}`}>Notifications</h2>
+                <h2 className={`font-bold text-md mb-2 ${isDarkMode ? 'text-zinc-100' : 'text-zinc-900'}`}>Notifications</h2>
                 <ul>
                     {notifications.map((notif, index) => (
                         <li key={index} className="flex items-center justify-start mb-4">
@@ -39,7 +41,7 @@ export default function Sidebar() {
                             )}
                             <div className="">
                                 <p className="text-xs">{notif.message}</p>
-                                <p className={`text-xs ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>{notif.time}</p>
+                                <p className={`text-xs ${isDarkMode ? 'text-zinc-400' : 'text-zinc-500'}`}>{notif.time}</p>
                             </div>
                         </li>
                     ))}
@@ -48,7 +50,7 @@ export default function Sidebar() {
 
             {/* Activities Section */}
             <div>
-                <h2 className={`font-bold text-md mb-2 ${isDarkMode ? 'text-gray-100' : 'text-gray-900'}`}>Activities</h2>
+                <h2 className={`font-bold text-md mb-2 ${isDarkMode ? 'text-zinc-100' : 'text-zinc-900'}`}>Activities</h2>
                 <ul>
                     <li className="flex items-center justify-start mb-4">
                         <div className={`p-1 rounded-full ${isDarkMode ? 'bg-yellow-600/20' : 'bg-yellow-200/50'} mr-2`}>
@@ -56,7 +58,7 @@ export default function Sidebar() {
                         </div>
                         <div className="">
                             <p className="text-xs">You have a bug that needs ...</p>
-                            <p className={`text-xs ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Just now</p>
+                            <p className={`text-xs ${isDarkMode ? 'text-zinc-400' : 'text-zinc-500'}`}>Just now</p>
                         </div>
                     </li>
                 </ul>
@@ -64,7 +66,7 @@ export default function Sidebar() {
 
             {/* Contacts Section */}
             <div>
-                <h2 className={`font-bold text-md mb-2 ${isDarkMode ? 'text-gray-100' : 'text-gray-900'}`}>Contacts</h2>
+                <h2 className={`font-bold text-md mb-2 ${isDarkMode ? 'text-zinc-100' : 'text-zinc-900'}`}>Contacts</h2>
                 <ul>
                     <li className="flex items-center justify-start mb-4">
                         <div className={`p-1 rounded-full ${isDarkMode ? 'bg-purple-600/20' : 'bg-purple-200/50'} mr-2`}>
@@ -72,7 +74,7 @@ export default function Sidebar() {
                         </div>
                         <div className="">
                             <p className="text-xs">New user registered</p>
-                            <p className={`text-xs ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>59 minutes ago</p>
+                            <p className={`text-xs ${isDarkMode ? 'text-zinc-400' : 'text-zinc-500'}`}>59 minutes ago</p>
                         </div>
                     </li>
                 </ul>

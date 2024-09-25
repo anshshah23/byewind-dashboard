@@ -15,7 +15,7 @@ const App = () => {
         <div className="flex flex-col w-full">
           <Header className="static" />
 
-          <div className="px-4 py-2 border-x-2 border-gray-200 flex flex-col overflow-y-scroll">
+          <div className="border-x-2 border-zinc-200 flex flex-col overflow-y-scroll">
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/orders" element={<Table />} />

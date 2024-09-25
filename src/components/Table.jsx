@@ -5,9 +5,11 @@ import { MdOutlineDateRange } from "react-icons/md";
 import { LuArrowUpDown } from "react-icons/lu";
 import { CgSortAz } from "react-icons/cg";
 import ReactPaginate from 'react-paginate';
+import { useAuth } from './Context';
 
 const Table = () => {
     const [currentPage, setCurrentPage] = useState(0);
+    const { isDarkMode } = useAuth();
 
     const data = [
         { orderId: '#CM9801', user: 'Natali Craig', project: 'Landing Page', address: 'Meadow Lane Oakland', date: 'Just now', status: 'In Progress' },
@@ -37,35 +39,35 @@ const Table = () => {
             case 'Approved':
                 return 'text-[#ffe898]';
             case 'Rejected':
-                return 'text-gray-500';
+                return 'text-zinc-500';
             default:
                 return '';
         }
     };
+    const icons = [ <FaPlus />, <CgSortAz />, <LuArrowUpDown /> ];
 
     return (
-        <div className="p-6 w-full">
+        <div className={`p-6 w-full h-screen ${isDarkMode ? 'bg-zinc-950 text-white fade-in' : 'bg-white text-zinc-900 fade-out'}`}>
             <h2 className="text-xl font-bold mb-4">Order List</h2>
 
             {/* Table Header */}
-            <div className="flex items-center justify-between mb-4 rounded-md bg-[#f8f9fb] p-2">
+            <div className={`flex items-center justify-between mb-4 rounded-md p-2 ${isDarkMode ? 'bg-zinc-900 text-white fade-in' : ' bg-[#f8f9fb] text-zinc-900 fade-out'}`}>
                 <div className="flex items-center gap-2">
-                    <button className="text-xl rounded-md hover:bg-slate-300 hover:bg-opacity-55 p-2">
-                        <FaPlus />
-                    </button>
-                    <button className="text-xl rounded-md hover:bg-slate-300 hover:bg-opacity-55 p-2">
-                        <CgSortAz />
-                    </button>
-                    <button className="text-xl rounded-md hover:bg-slate-300 hover:bg-opacity-55 p-2">
-                        <LuArrowUpDown />
-                    </button>
+                    {
+                        icons.map((icon, index) => (
+                            <button key={index} className="text-xl rounded-md hover:bg-slate-300 hover:bg-opacity-55 p-2">
+                                {icon}
+                            </button>
+                        ))
+                    }
                 </div>
                 <div className="relative">
-                    <FaSearch className="absolute top-3.5 left-2 text-gray-400" />
+                    <FaSearch className={`absolute top-3.5 left-2 ${isDarkMode ? 'text-zinc-300 fade-in' : 'text-zinc-400 fade-out'}`} />
                     <input
                         type="text"
                         placeholder="Search"
-                        className="pl-8 py-2 border rounded-md w-64"
+                        className={`pl-8 py-2 border rounded-lg w-15 
+                            ${isDarkMode ? 'bg-zinc-800 text-white border-zinc-600 fade-in' : 'bg-[#f8f9fb] text-black border-zinc-300 fade-out'}`}
                     />
                 </div>
             </div>
@@ -74,7 +76,7 @@ const Table = () => {
             <div className="overflow-x-auto">
                 <table className="w-full text-left">
                     <thead>
-                        <tr className="border-b" style={{ color: "#2e2e2e" }}>
+                        <tr className={`border-b ${isDarkMode ? 'text-white' : 'text-black'}`}>
                             <th className="p-2">Order ID</th>
                             <th className="p-2">User</th>
                             <th className="p-2">Project</th>
@@ -85,7 +87,7 @@ const Table = () => {
                     </thead>
                     <tbody>
                         {currentPageData.map((item, index) => (
-                            <tr key={index} className="border-b rounded-md hover:bg-[#f8f9fb]">
+                            <tr key={index} className={`border-b rounded-md ${isDarkMode ? 'hover:bg-zinc-800 text-white border-zinc-600' : 'hover:bg-[#f8f9fb] text-black border-zinc-300'}`}>
                                 <td className="p-2 whitespace-nowrap">
                                     <input type="checkbox" className="mx-2 text-lg" />
                                     {item.orderId}
@@ -127,7 +129,7 @@ const Table = () => {
                     previousClassName={'p-2 font-bold rounded'}
                     nextClassName={'p-2 font-bold rounded'}
                     breakClassName={'p-2'}
-                    activeClassName={'bg-gray-200'}
+                    activeClassName={`bg-zinc-200 text-zinc-900 ${isDarkMode ? 'bg-zinc-700' : 'bg-zinc-200'}`}
                 />
             </div>
         </div>
