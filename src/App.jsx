@@ -2,12 +2,13 @@ import { motion } from "framer-motion";
 import Sidebar from "./components/Sidebar";
 import RightBar from "./components/RightBar";
 import { div } from "framer-motion/client";
+import Dashboard from "./components/Dashboard";
 
 const App = () => {
   return (
-    <div className="flex">
+    <div className="flex flex-col">
       <Sidebar />
-      <div className="flex items-center w-full justify-center h-screen bg-gray-100">
+      {/* <div className="flex items-center w-full justify-center h-screen bg-gray-100">
         <motion.div
           className="p-10"
           initial={{ opacity: 0, x: -50 }}
@@ -18,9 +19,11 @@ const App = () => {
             <h1 className="text-2xl font-bold text-gray-800">Dashboard</h1>
           </div>
         </motion.div>
-      </div>
+        </div> */}
+      <Dashboard/>
       <RightBar />
     </div>
+
   );
 };
 
