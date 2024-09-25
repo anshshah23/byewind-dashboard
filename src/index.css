@@ -31,6 +31,29 @@ display: none;
     border-radius: 25%;
 }
 
+.active-tab-dark::before {
+    content: '';
+    position: absolute;
+    left: -0px; /* Adjust the left position based on your design */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 16px;
+    background-color: white;
+    border-radius: 25%;
+}
+
 .hover-bg {
     transition: background-color 0.3s ease;
+}
+.dark-mode {
+    --background-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --highlight-color: #2c2c2c;
+}
+
+.light-mode {
+    --background-color: #ffffff;
+    --text-color: #333333;
+    --highlight-color: #f0f0f0;
 }

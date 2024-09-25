@@ -7,11 +7,13 @@ import { FaRegBell, FaSearch } from "react-icons/fa";
 import { FaRegMoon } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useAuth } from './Context';
+import { delay } from 'framer-motion';
 
 export default function Header() {
     const { setIsLeftClose, setIsRightClose, isLeftClose, isRightClose, isDarkMode, setIsDarkMode } = useAuth();
     const toggleDarkMode = () => {
         setIsDarkMode(!isDarkMode);
+        delay(1000);
     };
     return (
         <>
