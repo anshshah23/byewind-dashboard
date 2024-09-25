@@ -1,6 +1,13 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { PieChart, Pie, Sector, Cell } from 'recharts';
 import { FaArrowTrendUp } from "react-icons/fa6";
+import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps";
+import { HiOutlineArrowTrendingDown } from "react-icons/hi2";
+import {
+    LineChart,
+    Line,
+    ReferenceLine,
+} from 'recharts';
 import { Link } from 'react-router-dom';
 
 export default function Dashboard() {
@@ -40,6 +47,14 @@ export default function Dashboard() {
         { name: 'Jun', Actual: 19, Projection: 23 }
     ];
 
+    const locations = [
+        { city: 'New York', revenue: '72K', coordinates: [-74.006, 40.7128] },
+        { city: 'San Francisco', revenue: '39K', coordinates: [-122.4194, 37.7749] },
+        { city: 'Sydney', revenue: '25K', coordinates: [151.2093, -33.8688] },
+        { city: 'Singapore', revenue: '61K', coordinates: [103.8198, 1.3521] },
+    ];
+
+
     const tableData = [
         { name: 'ASOS Ridley High Waist', price: 79.49, quantity: 82, amount: 6518.18 },
         { name: 'Marco Lightweight Shirt', price: 128.50, quantity: 37, amount: 4754.50 },
@@ -66,12 +81,14 @@ export default function Dashboard() {
                 <div className="flex flex-col md:flex-row gap-4">
                     <div className="flex flex-wrap gap-x-6 w-full md:w-1/2">
                         {boxes.map((data, index) => (
-                            <Link to={data.link} key={index} className="bg-blue-100 py-8 px-6 h-[20%] md:h-[46%] rounded-lg w-full md:w-[47%]">
+                            <Link to={data.link} key={index} className=" bg-blue-100 py-8 px-6 h-[20%] md:h-[46%] rounded-lg w-full md:w-[47%]">
                                 <div className="text-md text-black font-bold">{data.name}</div>
                                 <div className="mt-2 flex justify-between items-center gap-2">
                                     <span className="text-2xl font-bold">{data.number}</span>
                                     <span className={`text-sm flex items-center ${data.hike.startsWith('-') ? 'text-red-500' : 'text-green-500'}`}>
-                                        {data.hike} <FaArrowTrendUp className="ml-1" />
+                                        {data.hike} {
+                                            data.hike.startsWith('+') ? <FaArrowTrendUp className="ml-1" /> : <HiOutlineArrowTrendingDown className="ml-1" />
+                                        }
                                     </span>
                                 </div>
                             </Link>
@@ -180,74 +197,25 @@ export default function Dashboard() {
 
 
             <div className='flex gap-6 h-[380px] w-full mt-6'>
-                <div className='w-[70%] rounded-lg overflow-y-scroll py-6 px-4' style={{ backgroundColor: "#f8f9fb" }}>
-                    <div className='font-bold mb-1 ml-3'>Top Selling Products</div>
-                    <table className="min-w-full table-auto text-left border-collapse">
-                        <thead>
-                            <tr style={{ color: "#a9aaac" }} className='text-sm border-b-2 border-[#a9aaac]'>
-                                <th className="px-4 py-2">Name</th>
-                                <th className="px-4 py-2">Price</th>
-                                <th className="px-4 py-2">Quantity</th>
-                                <th className="px-4 py-2">Amount</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {tableData.map((item, index) => (
-                                <tr key={index} >
-                                    <td className="px-4 py-2">{item.name}</td>
-                                    <td className="px-4 py-2">${item.price.toFixed(2)}</td>
-                                    <td className="px-4 py-2">{item.quantity}</td>
-                                    <td className="px-4 py-2">${item.amount.toLocaleString()}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                <div className='w-[70%] rounded-lg py-6 px-4' style={{ backgroundColor: "#f8f9fb", height: "380px" }}>
+                <h3 className="m-4 text-start text-black font-bold">Revenue</h3>
+                    <ResponsiveContainer width="100%" height="100%">
+                        <LineChart data={data}>
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis dataKey="data" padding={{ left: 30, right: 30 }} />
+                            <YAxis />
+                            <Tooltip />
+                            <Legend />
+                            <Line type="monotone" dataKey="Projection" stroke="#8884d8" activeDot={{ r: 8 }} />
+                            <Line type="monotone" dataKey="Actual" stroke="#82ca9d" />
+                        </LineChart>
+                    </ResponsiveContainer>
                 </div>
 
                 <div className='w-[30%] h-full rounded-lg py-6 px-4' style={{ backgroundColor: "#f8f9fb" }}>
-                    <div className='font-bold'>Total Sales</div>
-                    <ResponsiveContainer width="100%" height={190}>
-                        <PieChart>
-                            <Pie
-                                data={PieChartdata}
-                                cx="50%"
-                                cy="50%"
-                                innerRadius={60}
-                                outerRadius={80}
-                                fill="#8884d8"
-                                paddingAngle={5}
-                                dataKey="value"
-                            >
-                                {PieChartdata.map((entry, index) => (
-                                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                                ))}
-                            </Pie>
-                        </PieChart>
-                    </ResponsiveContainer>
-
-                    <div>
-                        {
-                            PieChartdata.map((data, index) => {
-                                return (
-                                    <div className='flex py-1 justify-between text-center' key={index}>
-                                        <div className='flex items-center gap-2'>
-                                            {/* Circle with the corresponding color */}
-                                            <span
-                                                style={{ backgroundColor: COLORS[index], width: '12px', height: '12px', borderRadius: '50%', display: 'inline-block' }}
-                                            ></span>
-                                            <span>{data.name}</span>
-                                        </div>
-                                        <span>${data.value}</span>
-                                    </div>
-                                );
-                            })
-                        }
-                    </div>
-
-
+                    <h1>Add Map Here</h1>
                 </div>
             </div>
-
         </>
 
     );
