@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { FaSearch, FaFilter, FaSort } from 'react-icons/fa';
+import { useState } from 'react';
+import { FaSearch } from 'react-icons/fa';
 import { FaPlus } from "react-icons/fa6";
 import { MdOutlineDateRange } from "react-icons/md";
 import { LuArrowUpDown } from "react-icons/lu";
