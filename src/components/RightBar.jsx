@@ -21,14 +21,14 @@ export default function Sidebar() {
                 <ul>
                     {notifications.map((notif, index) => (
                         <li key={index} className="flex items-center justify-start mb-4">
-                            {notif.type === "bug" && <div className="p-1 rounded-full bg-gray-300 mr-2">
+                            {notif.type === "bug" && <div className="p-1 rounded-lg bg-gray-300 mr-2">
                                 <PiBugBeetle className="bg-gray-300 text-gray-950" style={{ fontSize: '18px' }} />
                             </div>}
-                            {notif.type === "user" && <div className="p-1 rounded-full bg-gray-300 mr-2">
+                            {notif.type === "user" && <div className="p-1 rounded-lg bg-gray-300 mr-2">
                                 <PiUser className="bg-gray-300 text-gray-950" style={{ fontSize: '18px' }} />
                             </div>}
                             {notif.type === "subscribe" &&
-                                <div className="p-1 rounded-full bg-gray-300 mr-2">
+                                <div className="p-1 rounded-lg bg-gray-300 mr-2">
                                     <PiBroadcast className="bg-gray-300 text-gray-950" style={{ fontSize: '18px' }} />
                                 </div>}
                             <div className="">
