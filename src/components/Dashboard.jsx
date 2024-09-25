@@ -2,6 +2,7 @@ import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { PieChart, Pie, Sector, Cell } from 'recharts';
 import { FaArrowTrendUp } from "react-icons/fa6";
+import Header from './Header';
 
 export default function Dashboard() {
     const boxes = [
@@ -57,6 +58,7 @@ export default function Dashboard() {
 
     return (
         <>
+            <Header />
             <div className='font-bold my-4 pt-6 border-t-2 border-gray-200 w-full'>eCommerce</div>
             <div className="flex w-full">
                 <div className="flex gap-4">

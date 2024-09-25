@@ -3,6 +3,8 @@ import Sidebar from "./components/Sidebar";
 import RightBar from "./components/RightBar";
 import { div } from "framer-motion/client";
 import Dashboard from "./components/Dashboard";
+import Table from "./components/Table";
+import Header from "./components/Header";
 
 const App = () => {
   return (
@@ -16,6 +18,8 @@ const App = () => {
 
       <RightBar />
     </div>
+    // <Table/>
+    // <Header />
 
   );
 };
