@@ -50,13 +50,13 @@ const Table = () => {
             {/* Table Header */}
             <div className="flex items-center justify-between mb-4 rounded-md bg-[#f8f9fb] p-2">
                 <div className="flex items-center gap-2">
-                    <button className="text-xl rounded-md hover:bg-slate-400 p-2">
+                    <button className="text-xl rounded-md hover:bg-slate-300 hover:bg-opacity-55 p-2">
                         <FaPlus />
                     </button>
-                    <button className="text-xl rounded-md hover:bg-slate-400 p-2">
+                    <button className="text-xl rounded-md hover:bg-slate-300 hover:bg-opacity-55 p-2">
                         <CgSortAz />
                     </button>
-                    <button className="text-xl rounded-md hover:bg-slate-400 p-2">
+                    <button className="text-xl rounded-md hover:bg-slate-300 hover:bg-opacity-55 p-2">
                         <LuArrowUpDown />
                     </button>
                 </div>
@@ -74,7 +74,7 @@ const Table = () => {
             <div className="overflow-x-auto">
                 <table className="w-full text-left">
                     <thead>
-                        <tr className="border-b" style={{ color: "#a9aaac" }}>
+                        <tr className="border-b" style={{ color: "#2e2e2e" }}>
                             <th className="p-2">Order ID</th>
                             <th className="p-2">User</th>
                             <th className="p-2">Project</th>

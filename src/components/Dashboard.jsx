@@ -1,7 +1,6 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { PieChart, Pie, Sector, Cell } from 'recharts';
 import { FaArrowTrendUp } from "react-icons/fa6";
-import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps";
 import { HiOutlineArrowTrendingDown } from "react-icons/hi2";
 import {
     LineChart,
