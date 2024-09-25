@@ -8,17 +8,17 @@ import Header from "./components/Header";
 
 const App = () => {
   return (
-    <div className="flex">
-      <Sidebar />
+    // <div className="flex">
+    //   <Sidebar />
 
 
-      <div className="px-4 border-x-2 border-gray-200 py-6 flex w-full flex-col h-screen overflow-y-scroll">
-        <Dashboard />
-      </div>
+    //   <div className="px-4 border-x-2 border-gray-200 py-6 flex w-full flex-col h-screen overflow-y-scroll">
+    //     <Dashboard />
+    //   </div>
 
-      <RightBar />
-    </div>
-    // <Table/>
+    //   <RightBar />
+    // </div>
+    <Table/>
     // <Header />
 
   );

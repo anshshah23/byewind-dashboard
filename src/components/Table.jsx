@@ -14,15 +14,6 @@ const Table = () => {
         { orderId: '#CM9802', user: 'Kate Morrison', project: 'CRM Admin pages', address: 'Larry San Francisco', date: 'A minute ago', status: 'Complete' },
         { orderId: '#CM9803', user: 'Drew Cano', project: 'Client Project', address: 'Bagwell Avenue Ocala', date: '1 hour ago', status: 'Pending' },
         { orderId: '#CM9804', user: 'Orlando Diggs', project: 'Admin Dashboard', address: 'Washburn Baton Rouge', date: 'Yesterday', status: 'Rejected' },
-        { orderId: '#CM9804', user: 'Orlando Diggs', project: 'Admin Dashboard', address: 'Washburn Baton Rouge', date: 'Yesterday', status: 'Approved' },
-        { orderId: '#CM9804', user: 'Orlando Diggs', project: 'Admin Dashboard', address: 'Washburn Baton Rouge', date: 'Yesterday', status: 'Approved' },
-        { orderId: '#CM9804', user: 'Orlando Diggs', project: 'Admin Dashboard', address: 'Washburn Baton Rouge', date: 'Yesterday', status: 'Approved' },
-        { orderId: '#CM9804', user: 'Orlando Diggs', project: 'Admin Dashboard', address: 'Washburn Baton Rouge', date: 'Yesterday', status: 'Approved' },
-        { orderId: '#CM9804', user: 'Orlando Diggs', project: 'Admin Dashboard', address: 'Washburn Baton Rouge', date: 'Yesterday', status: 'Approved' },
-        { orderId: '#CM9804', user: 'Orlando Diggs', project: 'Admin Dashboard', address: 'Washburn Baton Rouge', date: 'Yesterday', status: 'Approved' },
-        { orderId: '#CM9804', user: 'Orlando Diggs', project: 'Admin Dashboard', address: 'Washburn Baton Rouge', date: 'Yesterday', status: 'Approved' },
-        { orderId: '#CM9804', user: 'Orlando Diggs', project: 'Admin Dashboard', address: 'Washburn Baton Rouge', date: 'Yesterday', status: 'Approved' },
-        { orderId: '#CM9804', user: 'Orlando Diggs', project: 'Admin Dashboard', address: 'Washburn Baton Rouge', date: 'Yesterday', status: 'Approved' },
         { orderId: '#CM9805', user: 'Andi Lane', project: 'App Landing Page', address: 'Nest Lane Olivette', date: 'Feb 2, 2023', status: 'Rejected' },
     ];
 
@@ -53,7 +44,7 @@ const Table = () => {
     };
 
     return (
-        <div className="p-6 w-full sm:overflow-x-auto">
+        <div className="p-6 w-full">
             <h2 className="text-xl font-bold mb-4">Order List</h2>
 
             {/* Table Header */}
@@ -79,47 +70,48 @@ const Table = () => {
                 </div>
             </div>
 
-            <table className="w-full text-left">
-                <thead>
-                    <tr className="border-b" style={{ color: "#a9aaac" }}>
-                        <th className="p-2">Order ID</th>
-                        <th className="p-2">User</th>
-                        <th className="p-2">Project</th>
-                        <th className="p-2">Address</th>
-                        <th className="p-2">Date</th>
-                        <th className="p-2">Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {currentPageData.map((item, index) => (
-                        <tr key={index} className="border-b rounded-md hover:bg-[#f8f9fb]">
-                            <td className="p-2 ">
-                                <input type="checkbox"  className='mx-2 text-lg' />
-                                {item.orderId}
-                            </td>
-                            <td className="p-2 flex items-center gap-2">
-                                <img
-                                    src={`https://i.pravatar.cc/30?img=${index + 1}`}
-                                    alt="avatar"
-                                    className="w-8 h-8 rounded-full"
-                                />
-                                {item.user}
-                            </td>
-                            <td className="p-2">{item.project}</td>
-                            <td className="p-2">{item.address}</td>
-                            <td className="p-2 flex items-center">
-                                <MdOutlineDateRange className="mr-2" />
-                                {item.date}
-                            </td>
-
-                            <td className={`p-2 ${getStatusClass(item.status)}`}>
-                                {item.status}
-                            </td>
+            {/* Responsive Table */}
+            <div className="overflow-x-auto">
+                <table className="w-full text-left">
+                    <thead>
+                        <tr className="border-b" style={{ color: "#a9aaac" }}>
+                            <th className="p-2">Order ID</th>
+                            <th className="p-2">User</th>
+                            <th className="p-2">Project</th>
+                            <th className="p-2">Address</th>
+                            <th className="p-2">Date</th>
+                            <th className="p-2">Status</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
-
+                    </thead>
+                    <tbody>
+                        {currentPageData.map((item, index) => (
+                            <tr key={index} className="border-b rounded-md hover:bg-[#f8f9fb]">
+                                <td className="p-2 whitespace-nowrap">
+                                    <input type="checkbox" className="mx-2 text-lg" />
+                                    {item.orderId}
+                                </td>
+                                <td className="p-2 flex items-center gap-2 whitespace-nowrap">
+                                    <img
+                                        src={`https://i.pravatar.cc/30?img=${index + 1}`}
+                                        alt="avatar"
+                                        className="w-8 h-8 rounded-full"
+                                    />
+                                    {item.user}
+                                </td>
+                                <td className="p-2 whitespace-nowrap">{item.project}</td>
+                                <td className="p-2 whitespace-normal break-words">{item.address}</td>
+                                <td className="p-2 flex items-center whitespace-nowrap">
+                                    <MdOutlineDateRange className="mr-2" />
+                                    {item.date}
+                                </td>
+                                <td className={`p-2 ${getStatusClass(item.status)} whitespace-nowrap`}>
+                                    {item.status}
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
 
             <div className="flex justify-end mt-4">
                 <ReactPaginate
