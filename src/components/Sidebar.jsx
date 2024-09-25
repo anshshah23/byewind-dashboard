@@ -2,7 +2,6 @@ import { useState } from "react";
 import {
     FaChevronDown,
     FaChevronRight,
-    FaBars,
     FaUserCircle
 } from "react-icons/fa";
 import { FaRegIdBadge } from "react-icons/fa";
@@ -21,30 +20,29 @@ const menus = {
     SocialMenu: ['Feed', 'Messages', 'Friends', 'Groups', 'Notifications 1']
 };
 
-function ExpandableMenu({ label, Icon, menuItems, activeTab, setActiveTab }) {
+function ExpandableMenu({ label, Icon, menuItems, activeTab, setActiveTab, isDarkMode }) {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
         <li className="cursor-pointer">
             <div
-                className="flex text-md py-2 pl-3 hover:bg-gray-100 rounded-lg items-center"
+                className={`flex text-md py-2 pl-3 hover:${isDarkMode ? 'bg-gray-700' : 'bg-gray-200'} rounded-lg items-center transition-colors duration-300`}
                 onClick={() => setIsOpen(!isOpen)}
             >
                 <span className={`transition-transform duration-500 ${isOpen ? 'rotate-180' : ''}`}>
                     {isOpen ? (
-                        <FaChevronDown className="text-gray-400" style={{ fontSize: '12px' }} />
+                        <FaChevronDown className={`text-${isDarkMode ? 'gray-400' : 'gray-500'}`} style={{ fontSize: '12px' }} />
                     ) : (
-                        <FaChevronRight className="text-gray-400" style={{ fontSize: '12px', fontWeight: 'lighter' }} />
+                        <FaChevronRight className={`text-${isDarkMode ? 'gray-400' : 'gray-500'}`} style={{ fontSize: '12px', fontWeight: 'lighter' }} />
                     )}
                 </span>
-                <Icon className="mx-2 text-gray-950" style={{ fontSize: '18px' }} />
-                <span className="text-gray-950 text-md self-center font-normal">{label}</span>
+                <Icon className={`mx-2 text-${isDarkMode ? 'gray-300' : 'gray-800'}`} style={{ fontSize: '18px' }} />
+                <span className={`text-${isDarkMode ? 'gray-300' : 'gray-800'} text-md self-center font-normal`}>{label}</span>
             </div>
             {isOpen && menuItems.map((item, index) => (
                 <ul key={index} className="text-md pl-6">
                     <li
-                        className={`py-2 pl-4 cursor-pointer hover:bg-gray-100 rounded-lg ${activeTab === item ? 'active-tab' : ''
-                            }`}
+                        className={`py-2 pl-4 cursor-pointer hover:${isDarkMode ? 'bg-gray-600' : 'bg-gray-300'} rounded-lg transition-colors duration-300 ${activeTab === item ? 'active-tab' : ''}`}
                         onClick={() => setActiveTab(item)}
                     >
                         {item}
@@ -57,17 +55,16 @@ function ExpandableMenu({ label, Icon, menuItems, activeTab, setActiveTab }) {
 
 export default function Sidebar() {
     const [activeTab, setActiveTab] = useState('Default');
-    const {isLeftClose,setIsLeftClose} = useAuth();
+    const { isLeftClose, isDarkMode } = useAuth();
 
     return (
         <div>
-
             <div
-                className={`${isLeftClose ? 'hidden' : 'block'}  w-52 bg-white h-screen p-4 text-gray-950 font-sans overflow-scroll transition-transform duration-300 md:translate-x-0 fixed md:static top-0 left-0 z-50`}
+                className={`${isLeftClose ? 'hidden' : 'block'} w-52 ${isDarkMode ? 'bg-gray-900' : 'bg-white'} h-screen p-4 text-${isDarkMode ? 'gray-300' : 'gray-900'} font-sans overflow-scroll transition-transform duration-300 md:translate-x-0 fixed md:static top-0 left-0 z-50 shadow-lg`}
             >
                 <div className="flex items-center mb-8">
-                    <FaUserCircle size={30} className="mr-2 text-gray-950" />
-                    <p className="font-medium text-lg text-gray-950">ByeWind</p>
+                    <FaUserCircle size={30} className={`mr-2 text-${isDarkMode ? 'gray-300' : 'gray-800'}`} />
+                    <p className={`font-medium text-lg text-${isDarkMode ? 'gray-300' : 'gray-800'}`}>ByeWind</p>
                 </div>
 
                 <div className="mb-4">
@@ -75,43 +72,37 @@ export default function Sidebar() {
                 </div>
 
                 <div className="mb-4">
-                    <p className="text-gray-400 mb-2 ml-2 text-md font-normal">Dashboards</p>
+                    <p className={`text-${isDarkMode ? 'gray-400' : 'gray-500'} mb-2 ml-2 text-md font-normal`}>Dashboards</p>
                     <ul>
                         {[
-                            { label: 'Default', icon: PiChartPieSliceLight },      // Pie chart icon
-                            { label: 'eCommerce', icon: PiShoppingBagOpen }, // Shopping bag icon
-                            { label: 'Projects', icon: PiFolder },   // Folder icon
-                            { label: 'Online Courses', icon: PiBookOpenDuotone }    // Book icon
+                            { label: 'Default', icon: PiChartPieSliceLight },
+                            { label: 'eCommerce', icon: PiShoppingBagOpen },
+                            { label: 'Projects', icon: PiFolder },
+                            { label: 'Online Courses', icon: PiBookOpenDuotone }
                         ].map(({ label, icon: Icon }) => (
                             <li
                                 key={label}
-                                className={`flex items-center text-md py-2 pl-4 cursor-pointer transition-all duration-300 ease-in-out 
-                                    ${activeTab === label
-                                        ? 'active-tab'
-                                        : 'hover:bg-gray-100'
-                                    } rounded-lg`}
+                                className={`flex items-center text-md py-2 pl-4 cursor-pointer transition-colors duration-300 ease-in-out ${activeTab === label ? (isDarkMode ? 'active-tab-dark' : 'active-tab') : `hover:bg-${isDarkMode ? 'gray-700' : 'gray-200'}`} rounded-lg`}
                                 onClick={() => setActiveTab(label)}
                             >
-                                <Icon className="mr-2 text-gray-950" style={{ fontSize: '18px' }} />
-                                <span className="text-gray-950 text-md font-normal">{label}</span>
+                                <Icon className={`mr-2 text-${isDarkMode ? 'gray-300' : 'gray-800'}`} style={{ fontSize: '18px' }} />
+                                <span className={`text-${isDarkMode ? 'gray-300' : 'gray-800'} text-md font-normal`}>{label}</span>
                             </li>
                         ))}
                     </ul>
                 </div>
 
                 <div>
-                    <p className="text-gray-400 mb-2 ml-2 text-md font-normal">Pages</p>
+                    <p className={`text-${isDarkMode ? 'gray-400' : 'gray-500'} mb-2 ml-2 text-md font-normal`}>Pages</p>
                     <ul>
-                        <ExpandableMenu label="User Profile" Icon={FaRegIdBadge} menuItems={menus.ProfileMenu} activeTab={activeTab} setActiveTab={setActiveTab} />
-                        <ExpandableMenu label="Account" Icon={HiOutlineIdentification} menuItems={menus.AccountMenu} activeTab={activeTab} setActiveTab={setActiveTab} />
-                        <ExpandableMenu label="Corporate" Icon={PiUsersThreeDuotone} menuItems={menus.CorporateMenu} activeTab={activeTab} setActiveTab={setActiveTab} />
-                        <ExpandableMenu label="Blog" Icon={PiNotebookDuotone} menuItems={menus.BlogMenu} activeTab={activeTab} setActiveTab={setActiveTab} />
-                        <ExpandableMenu label="Social" Icon={PiChatsTeardropDuotone} menuItems={menus.SocialMenu} activeTab={activeTab} setActiveTab={setActiveTab} />
+                        <ExpandableMenu label="User Profile" Icon={FaRegIdBadge} menuItems={menus.ProfileMenu} activeTab={activeTab} setActiveTab={setActiveTab} isDarkMode={isDarkMode} />
+                        <ExpandableMenu label="Account" Icon={HiOutlineIdentification} menuItems={menus.AccountMenu} activeTab={activeTab} setActiveTab={setActiveTab} isDarkMode={isDarkMode} />
+                        <ExpandableMenu label="Corporate" Icon={PiUsersThreeDuotone} menuItems={menus.CorporateMenu} activeTab={activeTab} setActiveTab={setActiveTab} isDarkMode={isDarkMode} />
+                        <ExpandableMenu label="Blog" Icon={PiNotebookDuotone} menuItems={menus.BlogMenu} activeTab={activeTab} setActiveTab={setActiveTab} isDarkMode={isDarkMode} />
+                        <ExpandableMenu label="Social" Icon={PiChatsTeardropDuotone} menuItems={menus.SocialMenu} activeTab={activeTab} setActiveTab={setActiveTab} isDarkMode={isDarkMode} />
                     </ul>
                 </div>
             </div>
-
-
         </div>
     );
 }
