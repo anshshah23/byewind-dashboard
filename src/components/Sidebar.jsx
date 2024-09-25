@@ -7,9 +7,11 @@ import {
 } from "react-icons/fa";
 import { FaRegIdBadge } from "react-icons/fa";
 import { HiOutlineIdentification } from "react-icons/hi";
-import { PiChartPieSliceLight, PiShoppingBagOpen, PiFolder, PiBookOpenDuotone, PiUsersThreeDuotone, PiNotebookDuotone, PiChatsTeardropDuotone    
+import {
+    PiChartPieSliceLight, PiShoppingBagOpen, PiFolder, PiBookOpenDuotone, PiUsersThreeDuotone, PiNotebookDuotone, PiChatsTeardropDuotone
 } from "react-icons/pi";
 import FavRecent from "./FavRecent";
+import { useAuth } from "./Context";
 
 const menus = {
     ProfileMenu: ['Overview', 'User Projects', 'Campaigns', 'Documents', 'Followers'],
@@ -54,22 +56,14 @@ function ExpandableMenu({ label, Icon, menuItems, activeTab, setActiveTab }) {
 }
 
 export default function Sidebar() {
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [activeTab, setActiveTab] = useState('Default');
+    const {isLeftClose,setIsLeftClose} = useAuth();
 
     return (
         <div>
-            <div className="md:hidden p-4">
-                <FaBars
-                    className="cursor-pointer"
-                    size={30}
-                    onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                />
-            </div>
 
             <div
-                className={`w-52 bg-white h-screen p-4 text-gray-950 font-sans overflow-scroll transition-transform duration-300
-                ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 fixed md:static top-0 left-0 z-50`}
+                className={`${isLeftClose ? 'hidden' : 'block'}  w-52 bg-white h-screen p-4 text-gray-950 font-sans overflow-scroll transition-transform duration-300 md:translate-x-0 fixed md:static top-0 left-0 z-50`}
             >
                 <div className="flex items-center mb-8">
                     <FaUserCircle size={30} className="mr-2 text-gray-950" />
@@ -83,11 +77,11 @@ export default function Sidebar() {
                 <div className="mb-4">
                     <p className="text-gray-400 mb-2 ml-2 text-md font-normal">Dashboards</p>
                     <ul>
-                        {[ 
+                        {[
                             { label: 'Default', icon: PiChartPieSliceLight },      // Pie chart icon
                             { label: 'eCommerce', icon: PiShoppingBagOpen }, // Shopping bag icon
-                            { label: 'Projects', icon: PiFolder  },   // Folder icon
-                            { label: 'Online Courses', icon: PiBookOpenDuotone  }    // Book icon
+                            { label: 'Projects', icon: PiFolder },   // Folder icon
+                            { label: 'Online Courses', icon: PiBookOpenDuotone }    // Book icon
                         ].map(({ label, icon: Icon }) => (
                             <li
                                 key={label}
@@ -117,12 +111,7 @@ export default function Sidebar() {
                 </div>
             </div>
 
-            {isSidebarOpen && (
-                <div
-                    className="fixed inset-0 bg-black border-l-2 opacity-50 z-40 md:hidden"
-                    onClick={() => setIsSidebarOpen(false)}
-                />
-            )}
+
         </div>
     );
 }

@@ -1,6 +1,7 @@
 import { div } from "framer-motion/client";
 import { useState } from "react";
 import { PiBugBeetle, PiUser, PiBroadcast } from "react-icons/pi";
+import { useAuth } from "./Context";
 
 const notifications = [
     { type: "bug", message: "You have a bug that needs ...", time: "Just now" },
@@ -10,8 +11,10 @@ const notifications = [
 ];
 
 export default function Sidebar() {
+    const { isRightClose, setIsRightClose } = useAuth();
+
     return (
-        <div className="w-80 bg-white h-screen p-4 text-gray-700 font-sans overflow-scroll">
+        <div className={`${isRightClose ? 'hidden' : 'block'}  w-80 bg-white h-screen p-4 text-gray-700 font-sans overflow-scroll`}>
             {/* Notifications Section */}
             <div>
                 <h2 className="font-bold text-md mb-2">Notifications</h2>
