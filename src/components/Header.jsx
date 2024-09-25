@@ -4,6 +4,7 @@ import { IoStarOutline } from "react-icons/io5";
 import { GoSun } from "react-icons/go";
 import { FaClockRotateLeft } from "react-icons/fa6";
 import { FaRegBell, FaSearch } from "react-icons/fa";
+import { FaRegMoon } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useAuth } from './Context';
 
@@ -35,7 +36,10 @@ export default function Header() {
                                 ${isDarkMode ? 'bg-gray-800 text-white border-gray-600' : 'bg-[#f8f9fb] text-black border-gray-300'}`}
                         />
                     </div>
-                    <GoSun onClick={toggleDarkMode} className="cursor-pointer" />
+                    {
+                        isDarkMode ? <GoSun onClick={toggleDarkMode} className="cursor-pointer" /> :
+                        <FaRegMoon onClick={toggleDarkMode} className="cursor-pointer" />
+                    }
                     <FaClockRotateLeft />
                     <FaRegBell />
                     <LuPanelRightClose onClick={() => { setIsRightClose(!isRightClose) }} />

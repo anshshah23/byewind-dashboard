@@ -9,6 +9,7 @@ import {
     ReferenceLine,
 } from 'recharts';
 import { Link } from 'react-router-dom';
+import { useAuth } from './Context';
 
 export default function Dashboard() {
     const boxes = [
@@ -73,6 +74,7 @@ export default function Dashboard() {
         { name: 'E-mail', value: 48.96 },
     ];
     const COLORS = ['#1c1c1c', '#b9edbd', '#b1e3fe', '#95a4fd'];
+    const {isDarkMode} = useAuth();
 
     return (
         <>
