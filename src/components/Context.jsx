@@ -6,9 +6,10 @@ export const AuthProvider = ({ children }) => {
 
     const [isRightClose,setIsRightClose] = useState(false);
     const [isLeftClose,setIsLeftClose] = useState(false);
+    const [isDarkMode, setIsDarkMode] = useState(false);
 
     return (
-        <AuthContext.Provider value={{ isRightClose,setIsRightClose,isLeftClose,setIsLeftClose }}>
+        <AuthContext.Provider value={{ isRightClose,setIsRightClose,isLeftClose,setIsLeftClose,isDarkMode,setIsDarkMode }}>
             {children}
         </AuthContext.Provider>
     );
