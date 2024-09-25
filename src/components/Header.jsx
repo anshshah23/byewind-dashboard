@@ -4,15 +4,18 @@ import { IoStarOutline } from "react-icons/io5";
 import { GoSun } from "react-icons/go";
 import { FaClockRotateLeft } from "react-icons/fa6";
 import { FaRegBell, FaSearch } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Header() {
     return (
         <>
-            <div className='w-full h-8 px-6 text-lg  flex justify-between'>
+            <div className='w-full h-8 px-6 text-lg border-b-2 border-gray-300 p-8 flex justify-between'>
                 <div className='flex items-center gap-x-5'>
                     <LuPanelLeftClose />
                     <IoStarOutline />
-                    <span >Dashboard</span>
+                    <span >
+                        <Link to='/' >Dashboard</Link>
+                    </span>
                     <span >/</span>
                     <span >Default</span>
                 </div>

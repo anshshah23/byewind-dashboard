@@ -1,30 +1,33 @@
-import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { PieChart, Pie, Sector, Cell } from 'recharts';
 import { FaArrowTrendUp } from "react-icons/fa6";
-import Header from './Header';
+import { Link } from 'react-router-dom';
 
 export default function Dashboard() {
     const boxes = [
         {
             name: "Customers",
             number: "3,781",
-            hike: "+11.01%"
+            hike: "+11.01%",
+            link: "/"
         },
         {
             name: "Orders",
             number: "1,219",
-            hike: "-0.03%"
+            hike: "-0.03%",
+            link: "/orders"
         },
         {
             name: "Revenue",
             number: "$695",
-            hike: "+15.03%"
+            hike: "+15.03%",
+            link: "/"
         },
         {
             name: "Growth",
             number: "30.1%",
-            hike: "+6.08%"
+            hike: "+6.08%",
+            link: "/"
         }
     ];
 
@@ -58,13 +61,12 @@ export default function Dashboard() {
 
     return (
         <>
-            <Header />
-            <div className='font-bold my-4 pt-6 border-t-2 border-gray-200 w-full'>eCommerce</div>
+            <div className='font-bold my-1 w-full'>eCommerce</div>
             <div className="flex w-full">
-                <div className="flex gap-4">
-                    <div className="flex flex-wrap gap-x-6 w-1/2">
+                <div className="flex flex-col md:flex-row gap-4">
+                    <div className="flex flex-wrap gap-x-6 w-full md:w-1/2">
                         {boxes.map((data, index) => (
-                            <div key={index} className="bg-blue-100 py-8 px-6 h-1/3 rounded-lg w-[40%]">
+                            <Link to={data.link} key={index} className="bg-blue-100 py-8 px-6 h-[20%] md:h-[46%] rounded-lg w-full md:w-[47%]">
                                 <div className="text-md text-black font-bold">{data.name}</div>
                                 <div className="mt-2 flex justify-between items-center gap-2">
                                     <span className="text-2xl font-bold">{data.number}</span>
@@ -72,11 +74,11 @@ export default function Dashboard() {
                                         {data.hike} <FaArrowTrendUp className="ml-1" />
                                     </span>
                                 </div>
-                            </div>
+                            </Link>
                         ))}
                     </div>
 
-                    <div className="w-1/2 flex items-center justify-center">
+                    <div className="w-full md:w-1/2 flex items-center justify-center">
                         <div className="py-6 px-2 rounded-md w-full" style={{ backgroundColor: "#f8f9fb" }}>
                             <h3 className="ml-4 text-start text-black font-bold">Projections vs Actuals</h3>
                             <div className="mt-4" style={{ height: 300 }}>
@@ -105,11 +107,10 @@ export default function Dashboard() {
                         </div>
                     </div>
                 </div>
-
             </div>
 
-            <div className='flex gap-6 h-[380px] w-full mt-6'>
-                <div className='w-[70%] rounded-lg overflow-y-scroll py-6 px-4' style={{ backgroundColor: "#f8f9fb" }}>
+            <div className='flex flex-col md:flex-row gap-6 h-[380px] w-full mt-6'>
+                <div className='w-full md:w-[70%] rounded-lg overflow-y-scroll py-6 px-4' style={{ backgroundColor: "#f8f9fb" }}>
                     <div className='font-bold mb-1 ml-3'>Top Selling Products</div>
                     <table className="min-w-full table-auto text-left border-collapse">
                         <thead>
