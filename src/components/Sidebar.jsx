@@ -1,102 +1,128 @@
 import { useState } from "react";
 import {
-  FaUserCircle,
-  FaShoppingCart,
-  FaFolderOpen,
-  FaGraduationCap,
-  FaUserAlt,
-  FaBuilding,
-  FaBlog,
-  FaCommentDots,
-  FaChevronDown,
-  FaChevronRight
+    FaChevronDown,
+    FaChevronRight,
+    FaBars,
+    FaUserCircle
 } from "react-icons/fa";
+import { FaRegIdBadge } from "react-icons/fa";
+import { HiOutlineIdentification } from "react-icons/hi";
+import { PiChartPieSliceLight, PiShoppingBagOpen, PiFolder, PiBookOpenDuotone, PiUsersThreeDuotone, PiNotebookDuotone, PiChatsTeardropDuotone    
+} from "react-icons/pi";
+import FavRecent from "./FavRecent";
+
+const menus = {
+    ProfileMenu: ['Overview', 'User Projects', 'Campaigns', 'Documents', 'Followers'],
+    AccountMenu: ['Profile', 'Settings', 'Billing', 'Notifications', 'Security'],
+    CorporateMenu: ['Company', 'Departments', 'Corporate Projects', 'Tasks', 'Calendar'],
+    BlogMenu: ['Posts', 'Categories', 'Tags', 'Comments', 'Authors'],
+    SocialMenu: ['Feed', 'Messages', 'Friends', 'Groups', 'Notifications 1']
+};
+
+function ExpandableMenu({ label, Icon, menuItems, activeTab, setActiveTab }) {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+        <li className="cursor-pointer">
+            <div
+                className="flex text-md py-2 pl-3 hover:bg-gray-100 rounded-lg items-center"
+                onClick={() => setIsOpen(!isOpen)}
+            >
+                <span className={`transition-transform duration-500 ${isOpen ? 'rotate-180' : ''}`}>
+                    {isOpen ? (
+                        <FaChevronDown className="text-gray-400" style={{ fontSize: '12px' }} />
+                    ) : (
+                        <FaChevronRight className="text-gray-400" style={{ fontSize: '12px', fontWeight: 'lighter' }} />
+                    )}
+                </span>
+                <Icon className="mx-2 text-gray-950" style={{ fontSize: '18px' }} />
+                <span className="text-gray-950 text-md self-center font-normal">{label}</span>
+            </div>
+            {isOpen && menuItems.map((item, index) => (
+                <ul key={index} className="text-md pl-6">
+                    <li
+                        className={`py-2 pl-4 cursor-pointer hover:bg-gray-100 rounded-lg ${activeTab === item ? 'active-tab' : ''
+                            }`}
+                        onClick={() => setActiveTab(item)}
+                    >
+                        {item}
+                    </li>
+                </ul>
+            ))}
+        </li>
+    );
+}
 
 export default function Sidebar() {
-  const [isProfileOpen, setIsProfileOpen] = useState(false);
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [activeTab, setActiveTab] = useState('Default');
 
-  return (
-    <div className="w-64 bg-white h-screen p-4 text-gray-700 font-sans overflow-scroll">
-      {/* Profile and Title */}
-      <div className="flex items-center mb-8">
-        <FaUserCircle size={40} className="mr-2" />
+    return (
         <div>
-          <p className="font-bold text-lg">ByeWind</p>
-          <p className="text-gray-400 text-sm">Favorites</p>
-        </div>
-      </div>
-
-      {/* Favorites */}
-      <div className="mb-4">
-        <p className="text-gray-400 mb-2">Favorites</p>
-        <ul>
-          <li className="flex items-center text-sm py-2 pl-4 cursor-pointer hover:text-gray-900">
-            <span className="rounded-full h-2 w-2 bg-gray-500 mr-2"></span> Overview
-          </li>
-          <li className="flex items-center text-sm py-2 pl-4 cursor-pointer hover:text-gray-900">
-            <span className="rounded-full h-2 w-2 bg-gray-500 mr-2"></span> Projects
-          </li>
-        </ul>
-      </div>
-
-      {/* Dashboards */}
-      <div className="mb-4">
-        <p className="text-gray-400 mb-2">Dashboards</p>
-        <ul>
-          <li className="flex items-center text-sm py-2 pl-4 cursor-pointer bg-gray-100 rounded-lg">
-            <FaGraduationCap className="mr-2" /> Default
-          </li>
-          <li className="flex items-center text-sm py-2 pl-4 cursor-pointer hover:bg-gray-100 rounded-lg">
-            <FaShoppingCart className="mr-2" /> eCommerce
-          </li>
-          <li className="flex items-center text-sm py-2 pl-4 cursor-pointer hover:bg-gray-100 rounded-lg">
-            <FaFolderOpen className="mr-2" /> Projects
-          </li>
-          <li className="flex items-center text-sm py-2 pl-4 cursor-pointer hover:bg-gray-100 rounded-lg">
-            <FaGraduationCap className="mr-2" /> Online Courses
-          </li>
-        </ul>
-      </div>
-
-      {/* Pages */}
-      <div>
-        <p className="text-gray-400 mb-2">Pages</p>
-        <ul>
-          <li className="cursor-pointer">
-            <div
-              className="flex items-center text-sm py-2 pl-4 hover:bg-gray-100 rounded-lg"
-              onClick={() => setIsProfileOpen(!isProfileOpen)}
-            >
-              <FaUserAlt className="mr-2" />
-              User Profile
-              <span className="ml-auto">
-                {isProfileOpen ? <FaChevronDown /> : <FaChevronRight />}
-              </span>
+            <div className="md:hidden p-4">
+                <FaBars
+                    className="cursor-pointer"
+                    size={30}
+                    onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+                />
             </div>
-            {isProfileOpen && (
-              <ul className="ml-8 mt-2 text-gray-600">
-                <li className="py-1 cursor-pointer hover:text-gray-900">Overview</li>
-                <li className="py-1 cursor-pointer hover:text-gray-900">Projects</li>
-                <li className="py-1 cursor-pointer hover:text-gray-900">Campaigns</li>
-                <li className="py-1 cursor-pointer hover:text-gray-900">Documents</li>
-                <li className="py-1 cursor-pointer hover:text-gray-900">Followers</li>
-              </ul>
+
+            <div
+                className={`w-52 bg-white h-screen p-4 text-gray-950 font-sans overflow-scroll transition-transform duration-300
+                ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 fixed md:static top-0 left-0 z-50`}
+            >
+                <div className="flex items-center mb-8">
+                    <FaUserCircle size={30} className="mr-2 text-gray-950" />
+                    <p className="font-medium text-lg text-gray-950">ByeWind</p>
+                </div>
+
+                <div className="mb-4">
+                    <FavRecent />
+                </div>
+
+                <div className="mb-4">
+                    <p className="text-gray-400 mb-2 ml-2 text-md font-normal">Dashboards</p>
+                    <ul>
+                        {[ 
+                            { label: 'Default', icon: PiChartPieSliceLight },      // Pie chart icon
+                            { label: 'eCommerce', icon: PiShoppingBagOpen }, // Shopping bag icon
+                            { label: 'Projects', icon: PiFolder  },   // Folder icon
+                            { label: 'Online Courses', icon: PiBookOpenDuotone  }    // Book icon
+                        ].map(({ label, icon: Icon }) => (
+                            <li
+                                key={label}
+                                className={`flex items-center text-md py-2 pl-4 cursor-pointer transition-all duration-300 ease-in-out 
+                                    ${activeTab === label
+                                        ? 'active-tab'
+                                        : 'hover:bg-gray-100'
+                                    } rounded-lg`}
+                                onClick={() => setActiveTab(label)}
+                            >
+                                <Icon className="mr-2 text-gray-950" style={{ fontSize: '18px' }} />
+                                <span className="text-gray-950 text-md font-normal">{label}</span>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+
+                <div>
+                    <p className="text-gray-400 mb-2 ml-2 text-md font-normal">Pages</p>
+                    <ul>
+                        <ExpandableMenu label="User Profile" Icon={FaRegIdBadge} menuItems={menus.ProfileMenu} activeTab={activeTab} setActiveTab={setActiveTab} />
+                        <ExpandableMenu label="Account" Icon={HiOutlineIdentification} menuItems={menus.AccountMenu} activeTab={activeTab} setActiveTab={setActiveTab} />
+                        <ExpandableMenu label="Corporate" Icon={PiUsersThreeDuotone} menuItems={menus.CorporateMenu} activeTab={activeTab} setActiveTab={setActiveTab} />
+                        <ExpandableMenu label="Blog" Icon={PiNotebookDuotone} menuItems={menus.BlogMenu} activeTab={activeTab} setActiveTab={setActiveTab} />
+                        <ExpandableMenu label="Social" Icon={PiChatsTeardropDuotone} menuItems={menus.SocialMenu} activeTab={activeTab} setActiveTab={setActiveTab} />
+                    </ul>
+                </div>
+            </div>
+
+            {isSidebarOpen && (
+                <div
+                    className="fixed inset-0 bg-black border-l-2 opacity-50 z-40 md:hidden"
+                    onClick={() => setIsSidebarOpen(false)}
+                />
             )}
-          </li>
-          <li className="flex items-center text-sm py-2 pl-4 hover:bg-gray-100 rounded-lg cursor-pointer">
-            <FaUserAlt className="mr-2" /> Account
-          </li>
-          <li className="flex items-center text-sm py-2 pl-4 hover:bg-gray-100 rounded-lg cursor-pointer">
-            <FaBuilding className="mr-2" /> Corporate
-          </li>
-          <li className="flex items-center text-sm py-2 pl-4 hover:bg-gray-100 rounded-lg cursor-pointer">
-            <FaBlog className="mr-2" /> Blog
-          </li>
-          <li className="flex items-center text-sm py-2 pl-4 hover:bg-gray-100 rounded-lg cursor-pointer">
-            <FaCommentDots className="mr-2" /> Social
-          </li>
-        </ul>
-      </div>
-    </div>
-  );
+        </div>
+    );
 }
