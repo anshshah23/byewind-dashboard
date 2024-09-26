@@ -16,6 +16,7 @@ import {
     PiChatsTeardropDuotone
 } from "react-icons/pi";
 import { useAuth } from "./Context";
+import PropTypes from 'prop-types';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const menus = {
@@ -25,7 +26,14 @@ const menus = {
     BlogMenu: ['Posts', 'Categories', 'Tags', 'Comments', 'Authors'],
     SocialMenu: ['Feed', 'Messages', 'Friends', 'Groups', 'Notifications 1']
 };
-
+ExpandableMenu.propTypes = {
+    label: PropTypes.string.isRequired,
+    Icon: PropTypes.elementType.isRequired, 
+    menuItems: PropTypes.arrayOf(PropTypes.object).isRequired, 
+    activeTab: PropTypes.string.isRequired, 
+    setActiveTab: PropTypes.func.isRequired, 
+    isDarkMode: PropTypes.bool 
+  };
 function ExpandableMenu({ label, Icon, menuItems, activeTab, setActiveTab, isDarkMode }) {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -85,8 +93,8 @@ export default function Sidebar() {
     };
     
     const sidebarVariants = {
-        open: { width: '15rem', opacity: 1, transition: { duration: 0.5, ease: "easeInOut" } },
-        closed: { width: '0rem', opacity: 0, transition: { duration: 0.5, ease: "easeInOut" } },
+        open: { width: '15rem', opacity: 1, transition: { duration: 0.3, ease: "easeIn" } },
+        closed: { width: '0rem', opacity: 0, transition: { duration: 0.3, ease: "easeOut" } },
     };
 
     return (

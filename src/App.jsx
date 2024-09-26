@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import Sidebar from "./components/Sidebar";
 import RightBar from "./components/RightBar";
 import Dashboard from "./components/Dashboard";

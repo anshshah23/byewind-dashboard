@@ -4,7 +4,6 @@ import { IoStarOutline } from "react-icons/io5";
 import { GoSun } from "react-icons/go";
 import { FaClockRotateLeft } from "react-icons/fa6";
 import { FaRegBell, FaSearch } from "react-icons/fa";
-import { FaRegMoon } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useAuth } from './Context';
 import { useState } from "react";
@@ -19,12 +18,12 @@ export default function Header() {
 
     const handleClockClick = () => {
         setRotate(true);
-        setTimeout(() => setRotate(false), 1000); // Reset after 1000ms
+        setTimeout(() => setRotate(false), 700);
     };
 
     const handleBellClick = () => {
         setAnimate(true);
-        setTimeout(() => setAnimate(false), 800); // Reset animation after 800ms
+        setTimeout(() => setAnimate(false), 700);
     };
 
     const toggleDarkMode = () => {
@@ -47,7 +46,7 @@ export default function Header() {
                 <LuPanelLeftClose onClick={() => { setIsLeftClose(!isLeftClose) }} />
                 <IoStarOutline
                     onClick={handleClick}
-                    className={`cursor-pointer ${isDarkMode ? (isFilled ? 'text-yellow-500 fade-in' : 'text-white fade-in' ) : (isFilled ? 'text-yellow-500 fade-out' : 'text-zinc-900 fade-out') }`}
+                    className={`cursor-pointer ${isDarkMode ? (isFilled ? 'text-yellow-500 fade-in' : 'text-white fade-in') : (isFilled ? 'text-yellow-500 fade-out' : 'text-zinc-900 fade-out')}`}
                     style={{ fontSize: '18px' }}
                 />
                 <span>
@@ -73,7 +72,7 @@ export default function Header() {
                 <FaClockRotateLeft
                     onClick={handleClockClick}
                     className={`cursor-pointer transition-transform duration-200 ${rotate ? 'rotate-animation' : ''}`}
-                    style={{ fontSize: '16px' }} 
+                    style={{ fontSize: '16px' }}
                 />
                 <FaRegBell
                     onClick={handleBellClick}

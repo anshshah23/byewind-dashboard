@@ -45,7 +45,11 @@ const Table = () => {
                 return '';
         }
     };
-    const icons = [<FaPlus />, <CgSortAz />, <LuArrowUpDown />];
+    const icons = [
+        { icon: <FaPlus />, key: 'Plus' },
+        { icon: <CgSortAz />, key: 'SortAz' },
+        { icon: <LuArrowUpDown />, key: 'ArrowUpDown' }
+    ];
 
     return (
         <motion.div
@@ -56,14 +60,13 @@ const Table = () => {
             className={`p-6 w-full h-screen ${isDarkMode ? 'bg-zinc-900 text-white fade-in' : 'bg-white text-zinc-900 fade-out'}`}>
             <h2 className="text-xl font-bold mb-4">Order List</h2>
 
-            {/* Table Header */}
             <div className={`flex items-center justify-between mb-4 rounded-md p-2 ${isDarkMode ? 'bg-zinc-900 text-white fade-in' : ' bg-[#f8f9fb] text-zinc-900 fade-out'}`}>
                 <div className="flex items-center gap-2">
                     {
-                        icons.map((icon, index) => (
-                            <button key={index} className="text-xl rounded-md hover:bg-slate-300 hover:bg-opacity-55 p-2">
-                                {icon}
-                            </button>
+                        icons.map((item, index) => (
+                            <div key={index} className="p-2 rounded-md cursor-pointer hover:bg-zinc-200">
+                                {item.icon}
+                            </div>
                         ))
                     }
                 </div>
@@ -78,7 +81,6 @@ const Table = () => {
                 </div>
             </div>
 
-            {/* Responsive Table */}
             <div className="overflow-x-auto">
                 <table className="w-full text-left">
                     <thead>

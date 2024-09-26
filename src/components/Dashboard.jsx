@@ -286,7 +286,6 @@ export default function Dashboard() {
                                     return (
                                         <div className='flex py-1 justify-between text-center' key={index}>
                                             <div className='flex items-center gap-2'>
-                                                {/* Circle with the corresponding color */}
                                                 <span
                                                     style={{ backgroundColor: COLORS[index], width: '12px', height: '12px', borderRadius: '50%', display: 'inline-block' }}
                                                 ></span>
