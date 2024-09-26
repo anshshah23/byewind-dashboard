@@ -12,7 +12,7 @@ https://github.com/user-attachments/assets/ec0cbe9a-219c-4f03-87dd-284e6f3f3400
 This project is a modern, fully responsive dashboard interface built with React, Vite, Tailwind CSS, and Framer Motion. It was created in collaboration with Ashish48Maurya and is designed for optimal performance and smooth user interactions, including light/dark mode support, animations, and easy navigation.
 
 ## Features
-Dashboard Interface: A clean and minimalistic dashboard layout, providing a great user experience.
+Dashboard Interface: A clean and minimalistic dashboard layout, providing a great user experience. </br>
 Sidebar and Navbar Integration: The dashboard features a responsive sidebar that integrates seamlessly with the top navbar for easy access to different sections.
 Interactive Charts and Tables:Includes dynamic charts, tables, and plots to visualize data in a user-friendly manner.
 Dark/Light Mode Toggle: Users can switch between light and dark modes, offering a customized appearance.
