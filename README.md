@@ -1,7 +1,6 @@
 #Company Dashboard Frontend
 
-
-https://github.com/user-attachments/assets/2f3b8f76-af9e-40f8-b148-adf349bc05b2
+https://github.com/user-attachments/assets/ec0cbe9a-219c-4f03-87dd-284e6f3f3400
 
 ![image](https://github.com/user-attachments/assets/861fa40c-a3d9-4f89-9ebd-309fc5ae390f)
 ![image](https://github.com/user-attachments/assets/dbf061ae-50b1-4be0-bc81-0b2033c60663)
