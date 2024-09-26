@@ -58,7 +58,7 @@ export default function Sidebar() {
             variants={sidebarVariants}
             initial="closed"
             animate={isRightClose ? "closed" : "open"}
-            className={`h-screen font-sans
+            className={`max-h-screen font-sans overflow-scroll
                 ${isDarkMode ? 'bg-zinc-900 text-zinc-300 fade-in' : 'bg-white text-zinc-700 fade-out'}`}
         >
             <div className="p-4">

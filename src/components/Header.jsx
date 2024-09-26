@@ -43,8 +43,13 @@ export default function Header() {
             ${isDarkMode ? 'bg-zinc-900 border-zinc-700 text-white fade-in' : 'bg-white border-zinc-300 text-black fade-out'} 
             ${fade ? 'fade-out' : ''}`}>
             <div className='flex items-center gap-x-5'>
-                <LuPanelLeftClose onClick={() => { setIsLeftClose(!isLeftClose) }} />
-                <IoStarOutline
+                <div>
+                    {isLeftClose ? (
+                        <LuPanelRightClose onClick={() => setIsLeftClose(false)} />
+                    ) : (
+                        <LuPanelLeftClose onClick={() => setIsLeftClose(true)} />
+                    )}
+                </div>                <IoStarOutline
                     onClick={handleClick}
                     className={`cursor-pointer ${isDarkMode ? (isFilled ? 'text-yellow-500 fade-in' : 'text-white fade-in') : (isFilled ? 'text-yellow-500 fade-out' : 'text-zinc-900 fade-out')}`}
                     style={{ fontSize: '18px' }}
@@ -79,8 +84,13 @@ export default function Header() {
                     className={`cursor-pointer transition-transform duration-200 ${animate ? 'animate-bell' : ''}`}
                     style={{ fontSize: '16px' }}
                 />
-                <LuPanelRightClose onClick={() => { setIsRightClose(!isRightClose) }} />
-            </div>
+                <div>
+                    {isRightClose ? (
+                        <LuPanelLeftClose onClick={() => setIsRightClose(false)} />
+                    ) : (
+                        <LuPanelRightClose onClick={() => setIsRightClose(true)} />
+                    )}
+                </div>            </div>
         </div>
     );
 }
