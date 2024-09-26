@@ -224,6 +224,7 @@ export default function Dashboard() {
                                         <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                                     ))}
                                 </Pie>
+                                <Tooltip />
                             </PieChart>
                         </ResponsiveContainer>
 
