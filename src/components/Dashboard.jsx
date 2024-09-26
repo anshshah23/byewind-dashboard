@@ -2,6 +2,8 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsive
 import { PieChart, Pie, Sector, Cell } from 'recharts';
 import { FaArrowTrendUp } from "react-icons/fa6";
 import { HiOutlineArrowTrendingDown } from "react-icons/hi2";
+import lightMap from '/Image/lightMap.png'
+import darkMap from '/Image/darkMap.png'
 import {
     LineChart,
     Line,
@@ -161,7 +163,7 @@ export default function Dashboard() {
                         <ResponsiveContainer width="100%" height="100%" className={`${isDarkMode ? 'text-white fade-in' : 'text-black fade-out'}`}>
                             <LineChart data={data}>
                                 <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis dataKey="data" padding={{ left: 30, right: 30 }} />
+                                <XAxis dataKey="name" padding={{ left: 30, right: 30 }} />
                                 <YAxis />
                                 <Tooltip />
                                 <Legend />
@@ -172,8 +174,11 @@ export default function Dashboard() {
                     </div>
 
                     <div className={`w-[30%] h-full rounded-3xl py-6 px-4  ${isDarkMode ? 'bg-zinc-800 text-white fade-in' : 'bg-zinc-100 text-zinc-900 fade-out'}`}>
-                        <h1>Add Map Here</h1>
+                        {
+                            isDarkMode ? <img src={darkMap} alt="" className="w-full h-full object-cover rounded-3xl" /> : <img src={lightMap} alt="" className="w-full h-full object-cover rounded-3xl" />
+                        }
                     </div>
+
                 </div>
 
                 <div className='flex flex-col md:flex-row gap-6 h-[380px] w-full mt-6'>
@@ -219,6 +224,7 @@ export default function Dashboard() {
                                         <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                                     ))}
                                 </Pie>
+                                <Tooltip />
                             </PieChart>
                         </ResponsiveContainer>
 
