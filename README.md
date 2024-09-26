@@ -1,26 +1,29 @@
+# Company Dashboard Frontend
 
 https://github.com/user-attachments/assets/ec0cbe9a-219c-4f03-87dd-284e6f3f3400
 
-![image](https://github.com/user-attachments/assets/861fa40c-a3d9-4f89-9ebd-309fc5ae390f) ![image](https://github.com/user-attachments/assets/dbf061ae-50b1-4be0-bc81-0b2033c60663)
-![image](https://github.com/user-attachments/assets/220fc5a5-e8b9-4b26-a5c8-1c384fdd74cb) ![image](https://github.com/user-attachments/assets/87d762c0-e81b-4583-b637-9661f7da7025)
-
-##Company Dashboard Frontend
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px;">
+  <img src="https://github.com/user-attachments/assets/861fa40c-a3d9-4f89-9ebd-309fc5ae390f" alt="Image 1" style="width: 100%; max-width: 300px; height: auto;">
+  <img src="https://github.com/user-attachments/assets/dbf061ae-50b1-4be0-bc81-0b2033c60663" alt="Image 2" style="width: 100%; max-width: 300px; height: auto;">
+  <img src="https://github.com/user-attachments/assets/220fc5a5-e8b9-4b26-a5c8-1c384fdd74cb" alt="Image 3" style="width: 100%; max-width: 300px; height: auto;">
+  <img src="https://github.com/user-attachments/assets/87d762c0-e81b-4583-b637-9661f7da7025" alt="Image 4" style="width: 100%; max-width: 300px; height: auto;">
+</div>
 
 This project is a modern, fully responsive dashboard interface built with React, Vite, Tailwind CSS, and Framer Motion. It was created in collaboration with Ashish48Maurya and is designed for optimal performance and smooth user interactions, including light/dark mode support, animations, and easy navigation.
 
-##Features
-###Dashboard Interface: A clean and minimalistic dashboard layout, providing a great user experience.
-###Sidebar and Navbar Integration: The dashboard features a responsive sidebar that integrates seamlessly with the top navbar for easy access to different sections.
-###Interactive Charts and Tables: Includes dynamic charts, tables, and plots to visualize data in a user-friendly manner.
-###Dark/Light Mode Toggle: Users can switch between light and dark modes, offering a customized appearance.
-###Routing: Built-in routing to navigate between dashboard pages smoothly.
-###Sophisticated Animations: Leverages Framer Motion for smooth and modern animations throughout the UI.
+## Features
+### Dashboard Interface: A clean and minimalistic dashboard layout, providing a great user experience.
+### Sidebar and Navbar Integration: The dashboard features a responsive sidebar that integrates seamlessly with the top navbar for easy access to different sections.
+### Interactive Charts and Tables: Includes dynamic charts, tables, and plots to visualize data in a user-friendly manner.
+### Dark/Light Mode Toggle: Users can switch between light and dark modes, offering a customized appearance.
+### Routing: Built-in routing to navigate between dashboard pages smoothly.
+### Sophisticated Animations: Leverages Framer Motion for smooth and modern animations throughout the UI.
 
-##Tech Stack
-###React: A JavaScript library for building user interfaces.
-###Vite: A build tool that provides a faster and leaner development experience for modern web projects.
-###Tailwind CSS: A utility-first CSS framework for designing highly responsive layouts with minimal effort.
-###Framer Motion: A library for animations, adding smooth transitions and visual effects to the interface.
+## Tech Stack
+### React: A JavaScript library for building user interfaces.
+### Vite: A build tool that provides a faster and leaner development experience for modern web projects.
+### Tailwind CSS: A utility-first CSS framework for designing highly responsive layouts with minimal effort.
+### Framer Motion: A library for animations, adding smooth transitions and visual effects to the interface.
 
 # Project Setup: React + Vite + Tailwind + Framer Motion
 
