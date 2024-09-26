@@ -7,10 +7,25 @@ import { FaRegBell, FaSearch } from "react-icons/fa";
 import { FaRegMoon } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useAuth } from './Context';
+import { useState } from "react";
+
 
 export default function Header() {
     const { setIsLeftClose, setIsRightClose, isLeftClose, isRightClose, isDarkMode, setIsDarkMode } = useAuth();
     const [fade, setFade] = React.useState(false);
+    const [isFilled, setIsFilled] = useState(false);
+    const [animate, setAnimate] = useState(false);
+    const [rotate, setRotate] = useState(false);
+
+    const handleClockClick = () => {
+        setRotate(true);
+        setTimeout(() => setRotate(false), 1000); // Reset after 1000ms
+    };
+
+    const handleBellClick = () => {
+        setAnimate(true);
+        setTimeout(() => setAnimate(false), 800); // Reset animation after 800ms
+    };
 
     const toggleDarkMode = () => {
         setFade(true);
@@ -20,15 +35,23 @@ export default function Header() {
         }, 300);
     };
 
+    const handleClick = () => {
+        setIsFilled(!isFilled);
+    };
+
     return (
         <div className={`w-full h-8 px-6 text-lg border-b-2 p-8 flex justify-between 
             ${isDarkMode ? 'bg-zinc-900 border-zinc-700 text-white fade-in' : 'bg-white border-zinc-300 text-black fade-out'} 
             ${fade ? 'fade-out' : ''}`}>
             <div className='flex items-center gap-x-5'>
                 <LuPanelLeftClose onClick={() => { setIsLeftClose(!isLeftClose) }} />
-                <IoStarOutline />
+                <IoStarOutline
+                    onClick={handleClick}
+                    className={`cursor-pointer ${isDarkMode ? (isFilled ? 'text-yellow-500 fade-in' : 'text-white fade-in' ) : (isFilled ? 'text-yellow-500 fade-out' : 'text-zinc-900 fade-out') }`}
+                    style={{ fontSize: '18px' }}
+                />
                 <span>
-                    <Link to='/' className={`${isDarkMode ? 'text-white' : 'text-black'}`}>Dashboard</Link>
+                    <Link to='/' className={`${isDarkMode ? 'text-white fade-in' : 'text-black fade-out'}`}>Dashboard</Link>
                 </span>
                 <span >/</span>
                 <span>Default</span>
@@ -45,10 +68,18 @@ export default function Header() {
                 </div>
                 {
                     isDarkMode ? <GoSun onClick={toggleDarkMode} className="cursor-pointer" /> :
-                    <FaRegMoon onClick={toggleDarkMode} className="cursor-pointer" />
+                        <GoSun onClick={toggleDarkMode} className="cursor-pointer" />
                 }
-                <FaClockRotateLeft />
-                <FaRegBell />
+                <FaClockRotateLeft
+                    onClick={handleClockClick}
+                    className={`cursor-pointer transition-transform duration-200 ${rotate ? 'rotate-animation' : ''}`}
+                    style={{ fontSize: '16px' }} 
+                />
+                <FaRegBell
+                    onClick={handleBellClick}
+                    className={`cursor-pointer transition-transform duration-200 ${animate ? 'animate-bell' : ''}`}
+                    style={{ fontSize: '16px' }}
+                />
                 <LuPanelRightClose onClick={() => { setIsRightClose(!isRightClose) }} />
             </div>
         </div>

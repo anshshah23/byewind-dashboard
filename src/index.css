@@ -85,3 +85,35 @@ body.transition-dark-mode {
     transform: translateX(0);
     opacity: 1;
 }
+
+@keyframes bellAnimation {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(30deg);
+    }
+    50% {
+        transform: rotate(-30deg);
+    }
+    75% {
+        transform: rotate(30deg);
+    }
+}
+
+.animate-bell {
+    animation: bellAnimation 0.8s ease forwards;
+}
+
+@keyframes rotateLeft {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+.rotate-animation {
+    animation: rotateLeft 1s ease forwards;
+}
