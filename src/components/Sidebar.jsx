@@ -94,7 +94,7 @@ export default function Sidebar() {
             variants={sidebarVariants}
             initial="closed"
             animate={isLeftClose ? "closed" : "open"}
-            className={`h-screen font-sans overflow-hidden ${isDarkMode ? 'bg-zinc-900 text-zinc-300 fade-in' : 'bg-white text-zinc-700 fade-out'}`}
+            className={`h-screen font-sans ${isDarkMode ? 'bg-zinc-900 text-zinc-300 fade-in' : 'bg-white text-zinc-700 fade-out'}`}
         >
             <div className={`w-52 ${isLeftClose ? 'hidden' : 'block'} transition-bg ${isDarkMode ? 'bg-zinc-900 text-zinc-300 fade-in' : 'bg-white text-zinc-900 fade-out'} h-screen p-4 font-sans overflow-scroll transition-transform duration-300 md:translate-x-0 fixed md:static top-0 left-0 z-50 shadow-lg`}>
                 <div className="flex items-center mb-8">
@@ -125,8 +125,8 @@ export default function Sidebar() {
                                         key={item}
                                         onClick={() => handleItemClickFavRecent(item)}
                                         className={`flex items-center text-md py-2 pl-1 cursor-pointer transition-colors duration-200 ease-in-out ${selectedItem1 === item
-                                            ? (isDarkMode ? 'bg-zinc-950 text-white fade-in' : 'fade-out bg-zinc-100 text-black')
-                                            : (isDarkMode ? 'hover:bg-zinc-800 text-white fade-in' : 'fade-out hover:bg-zinc-200 text-zinc-500')
+                                            ? (isDarkMode ? 'bg-zinc-800 text-white fade-in' : 'fade-out bg-zinc-100 text-black')
+                                            : (isDarkMode ? 'hover:bg-zinc-700 text-white fade-in' : 'fade-out hover:bg-zinc-200 text-zinc-500')
                                         } rounded-lg`}
                                     >
                                         <span className={`rounded-full h-2 w-2 ${selectedItem1 === item ? (isDarkMode ? 'bg-zinc-300' : 'bg-zinc-700') : 'bg-zinc-300'} mr-2`}></span> {item}

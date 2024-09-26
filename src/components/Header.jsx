@@ -51,7 +51,7 @@ export default function Header() {
                     style={{ fontSize: '18px' }}
                 />
                 <span>
-                    <Link to='/' className={`${isDarkMode ? 'text-white fade-in' : 'text-black fade-out'}`}>Dashboard</Link>
+                    <Link to='/' className={`${isDarkMode ? 'text-white fade-in' : 'text-black fade-out'}`}>Dashboards</Link>
                 </span>
                 <span >/</span>
                 <span>Default</span>

@@ -14,7 +14,7 @@ display: none;
 
 .active-tab-dark {
     position: relative;
-    background-color: rgb(88, 88, 88);
+    background-color: rgb(40, 40, 40);
     transition: background-color 0.3s ease-in-out, padding-left 0.3s ease-in-out;
 }
 
@@ -33,12 +33,12 @@ display: none;
 .active-tab-dark::before {
     content: '';
     position: absolute;
-    left: -0px;
-    top: 50%;
+    left: -3px;
+    top: 50%;   
     transform: translateY(-50%);
     width: 5px;
     height: 16px;
-    background-color: white;
+    background-color: rgb(211, 231, 255);
     border-radius: 25%;
 }
 

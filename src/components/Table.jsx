@@ -6,6 +6,7 @@ import { LuArrowUpDown } from "react-icons/lu";
 import { CgSortAz } from "react-icons/cg";
 import ReactPaginate from 'react-paginate';
 import { useAuth } from './Context';
+import { motion } from 'framer-motion';
 
 const Table = () => {
     const [currentPage, setCurrentPage] = useState(0);
@@ -44,10 +45,15 @@ const Table = () => {
                 return '';
         }
     };
-    const icons = [ <FaPlus />, <CgSortAz />, <LuArrowUpDown /> ];
+    const icons = [<FaPlus />, <CgSortAz />, <LuArrowUpDown />];
 
     return (
-        <div className={`p-6 w-full h-screen ${isDarkMode ? 'bg-zinc-950 text-white fade-in' : 'bg-white text-zinc-900 fade-out'}`}>
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className={`p-6 w-full h-screen ${isDarkMode ? 'bg-zinc-900 text-white fade-in' : 'bg-white text-zinc-900 fade-out'}`}>
             <h2 className="text-xl font-bold mb-4">Order List</h2>
 
             {/* Table Header */}
@@ -132,7 +138,7 @@ const Table = () => {
                     activeClassName={`bg-zinc-200 text-zinc-900 ${isDarkMode ? 'bg-zinc-700' : 'bg-zinc-200'}`}
                 />
             </div>
-        </div>
+        </motion.div>
     );
 };
 
