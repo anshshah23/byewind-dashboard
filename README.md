@@ -13,17 +13,17 @@ This project is a modern, fully responsive dashboard interface built with React,
 
 ## Features
 Dashboard Interface: A clean and minimalistic dashboard layout, providing a great user experience. </br>
-Sidebar and Navbar Integration: The dashboard features a responsive sidebar that integrates seamlessly with the top navbar for easy access to different sections.
-Interactive Charts and Tables:Includes dynamic charts, tables, and plots to visualize data in a user-friendly manner.
-Dark/Light Mode Toggle: Users can switch between light and dark modes, offering a customized appearance.
-Routing: Built-in routing to navigate between dashboard pages smoothly.
-Sophisticated Animations: Leverages Framer Motion for smooth and modern animations throughout the UI.
+Sidebar and Navbar Integration: The dashboard features a responsive sidebar that integrates seamlessly with the top navbar for easy access to different sections. </br>
+Interactive Charts and Tables:Includes dynamic charts, tables, and plots to visualize data in a user-friendly manner. </br>
+Dark/Light Mode Toggle: Users can switch between light and dark modes, offering a customized appearance. </br>
+Routing: Built-in routing to navigate between dashboard pages smoothly. </br>
+Sophisticated Animations: Leverages Framer Motion for smooth and modern animations throughout the UI. </br>
 
 ## Tech Stack
-React: A JavaScript library for building user interfaces.
-Vite: A build tool that provides a faster and leaner development experience for modern web projects.
-Tailwind CSS: A utility-first CSS framework for designing highly responsive layouts with minimal effort.
-Framer Motion: A library for animations, adding smooth transitions and visual effects to the interface.
+React: A JavaScript library for building user interfaces. </br>
+Vite: A build tool that provides a faster and leaner development experience for modern web projects. </br>
+Tailwind CSS: A utility-first CSS framework for designing highly responsive layouts with minimal effort. </br>
+Framer Motion: A library for animations, adding smooth transitions and visual effects to the interface. </br>
 
 # Project Setup: React + Vite + Tailwind + Framer Motion
 
