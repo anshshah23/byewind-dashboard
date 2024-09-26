@@ -1,4 +1,4 @@
-#Company Dashboard Frontend
+##Company Dashboard Frontend
 
 https://github.com/user-attachments/assets/ec0cbe9a-219c-4f03-87dd-284e6f3f3400
 
