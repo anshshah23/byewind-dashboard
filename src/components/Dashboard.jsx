@@ -50,6 +50,13 @@ export default function Dashboard() {
         { name: 'Jun', Actual: 19, Projection: 23 }
     ];
 
+    const revenueDataCountry = [
+        { location: 'New York', revenue: 72, maxRevenue: 100 },
+        { location: 'San Francisco', revenue: 39, maxRevenue: 100 },
+        { location: 'Sydney', revenue: 25, maxRevenue: 100 },
+        { location: 'Singapore', revenue: 61, maxRevenue: 100 },
+    ];
+
     const revenueData = [
         { title: 'Current Week', value: '$58,211' },
         { title: 'Previous Week', value: '$68,768' },
@@ -190,13 +197,42 @@ export default function Dashboard() {
                         </ResponsiveContainer>
                     </div>
 
-                    <div className={`w-[30%] h-full rounded-3xl py-6 px-4  ${isDarkMode ? 'bg-zinc-800 text-white fade-in' : 'bg-zinc-100 text-zinc-900 fade-out'}`}>
-                        {
-                            isDarkMode ? <img src={darkMap} alt="" className="w-full h-full object-cover rounded-3xl" /> : <img src={lightMap} alt="" className="w-full h-full object-cover rounded-3xl" />
-                        }
+                    <div className={`w-[30%] h-full rounded-3xl py-6 px-4 ${isDarkMode ? 'bg-zinc-800 text-white fade-in' : 'bg-zinc-100 text-zinc-900 fade-out'}`}>
+                        <h6 className="text-md font-semibold text-center">Revenue by Location</h6>
+
+                        <div className="relative w-full h-1/2 rounded-3xl overflow-hidden">
+                            {isDarkMode ? (
+                                <img src={darkMap} alt="Dark Mode Map" className="w-full h-full object-cover rounded-3xl" />
+                            ) : (
+                                <img src={lightMap} alt="Light Mode Map" className="w-full h-full object-cover rounded-3xl" />
+                            )}
+                        </div>
+
+                        <div className={` ${isDarkMode ? ' text-white' : ' text-black'} rounded-lg`}>
+                            {revenueDataCountry.map((data, index) => (
+                                <div key={index} className="mb-1">
+                                    <div className="flex justify-between">
+                                        <span>{data.location}</span>
+                                        <span>{data.revenue}K</span>
+                                    </div>
+                                    <div className={`w-full h-2 ${isDarkMode ? 'bg-zinc-700' : 'bg-gray-200'} rounded-full mx-auto`}>
+                                        <div
+                                            className={`h-2 ${isDarkMode ? 'bg-blue-500' : 'bg-blue-500'} rounded-full`}
+                                            style={{ width: `${(data.revenue / data.maxRevenue) * 100}%` }}
+                                        ></div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
                     </div>
 
+<<<<<<< HEAD
                 </motion.div>
+=======
+
+                </div>
+>>>>>>> 3d721520c9a9ba9ba3b2051f1039fa44c65c64fc
 
                 <motion.div
                 initial={{ opacity: 0 }}
