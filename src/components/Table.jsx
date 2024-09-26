@@ -64,7 +64,7 @@ const Table = () => {
                 <div className="flex items-center gap-2">
                     {
                         icons.map((item, index) => (
-                            <div key={index} className="p-2 rounded-md cursor-pointer hover:bg-zinc-200">
+                            <div key={index} className={`p-2 rounded-md cursor-pointer ${isDarkMode ? "hover:bg-zinc-800" : "hover:bg-zinc-100" }`}>
                                 {item.icon}
                             </div>
                         ))

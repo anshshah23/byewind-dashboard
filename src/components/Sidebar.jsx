@@ -1,6 +1,6 @@
 import { useState } from "react";
 import {
-    FaChevronDown,
+    FaChevronUp,
     FaChevronRight,
     FaUserCircle,
     FaRegIdBadge
@@ -45,7 +45,7 @@ function ExpandableMenu({ label, Icon, menuItems, activeTab, setActiveTab, isDar
             >
                 <span className={`transition-transform duration-500 ${isOpen ? 'rotate-180' : ''}`}>
                     {isOpen ? (
-                        <FaChevronDown className={`text-${isDarkMode ? 'zinc-400 fade-in' : 'fade-out zinc-500'}`} style={{ fontSize: '12px' }} />
+                        <FaChevronUp className={`text-${isDarkMode ? 'zinc-400 fade-in' : 'fade-out zinc-500'}`} style={{ fontSize: '12px' }} />
                     ) : (
                         <FaChevronRight className={`text-${isDarkMode ? 'zinc-400 fade-in' : 'fade-out zinc-500'}`} style={{ fontSize: '12px' }} />
                     )}
