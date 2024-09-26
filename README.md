@@ -2,13 +2,6 @@
 
 https://github.com/user-attachments/assets/ec0cbe9a-219c-4f03-87dd-284e6f3f3400
 
-<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px;">
-  <img src="https://github.com/user-attachments/assets/861fa40c-a3d9-4f89-9ebd-309fc5ae390f" alt="Image 1" style="width: 100%; max-width: 45%; height: auto;">
-  <img src="https://github.com/user-attachments/assets/dbf061ae-50b1-4be0-bc81-0b2033c60663" alt="Image 2" style="width: 100%; max-width: 45%; height: auto;">
-  <img src="https://github.com/user-attachments/assets/220fc5a5-e8b9-4b26-a5c8-1c384fdd74cb" alt="Image 3" style="width: 100%; max-width: 45%; height: auto;">
-  <img src="https://github.com/user-attachments/assets/87d762c0-e81b-4583-b637-9661f7da7025" alt="Image 4" style="width: 100%; max-width: 45%; height: auto;">
-</div>
-
 This project is a modern, fully responsive dashboard interface built with React, Vite, Tailwind CSS, and Framer Motion. It was created in collaboration with Ashish48Maurya and is designed for optimal performance and smooth user interactions, including light/dark mode support, animations, and easy navigation.
 
 ## Features
