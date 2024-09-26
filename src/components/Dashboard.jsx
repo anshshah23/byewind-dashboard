@@ -163,7 +163,7 @@ export default function Dashboard() {
                         <ResponsiveContainer width="100%" height="100%" className={`${isDarkMode ? 'text-white fade-in' : 'text-black fade-out'}`}>
                             <LineChart data={data}>
                                 <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis dataKey="data" padding={{ left: 30, right: 30 }} />
+                                <XAxis dataKey="name" padding={{ left: 30, right: 30 }} />
                                 <YAxis />
                                 <Tooltip />
                                 <Legend />
