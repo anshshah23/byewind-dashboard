@@ -50,13 +50,6 @@ export default function Dashboard() {
         { name: 'Jun', Actual: 19, Projection: 23 }
     ];
 
-    const revenueDataCountry = [
-        { location: 'New York', revenue: 72, maxRevenue: 100 },
-        { location: 'San Francisco', revenue: 39, maxRevenue: 100 },
-        { location: 'Sydney', revenue: 25, maxRevenue: 100 },
-        { location: 'Singapore', revenue: 61, maxRevenue: 100 },
-    ];
-
     const revenueData = [
         { title: 'Current Week', value: '$58,211' },
         { title: 'Previous Week', value: '$68,768' },
@@ -78,6 +71,14 @@ export default function Dashboard() {
         { name: 'Sponsored', value: 154.02 },
         { name: 'E-mail', value: 48.96 },
     ];
+
+    const revenueDataCountry = [
+        { location: 'New York', revenue: 72, maxRevenue: 100 },
+        { location: 'San Francisco', revenue: 39, maxRevenue: 100 },
+        { location: 'Sydney', revenue: 25, maxRevenue: 100 },
+        { location: 'Singapore', revenue: 61, maxRevenue: 100 },
+    ];
+
     const COLORS = ['#1c1c1c', '#b9edbd', '#b1e3fe', '#95a4fd'];
     const { isDarkMode } = useAuth();
 
@@ -96,7 +97,7 @@ export default function Dashboard() {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.7 }}
-                className={`flex w-full ${isDarkMode ? 'bg-zinc-900 text-white fade-in' : 'bg-white text-zinc-900 fade-out'}`}>
+                    className={`flex w-full ${isDarkMode ? 'bg-zinc-900 text-white fade-in' : 'bg-white text-zinc-900 fade-out'}`}>
                     <div className="flex flex-col md:flex-row gap-x-4">
                         <div className="flex flex-wrap gap-x-4 gap-y-4 h-full w-full md:w-1/2">
                             {boxes.map((data, index) => {
@@ -163,11 +164,11 @@ export default function Dashboard() {
                 </motion.div>
 
                 <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.7 }}
-                 className='flex gap-6 h-[380px] w-full mt-6'>
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.7 }}
+                    className='flex gap-6 h-[380px] w-full mt-6'>
                     <div className={`w-[70%] rounded-3xl pt-8 pb-12 px-8 ${isDarkMode ? 'bg-zinc-800 text-white fade-in' : 'bg-zinc-100 text-zinc-900 fade-out'}`} style={{ height: "380px" }}>
                         <div className="flex items-center space-x-4 mb-4">
                             <h3 className={`font-bold ${isDarkMode ? 'text-white fade-in' : 'text-black fade-out'}`}>Revenue</h3>
@@ -224,22 +225,15 @@ export default function Dashboard() {
                                 </div>
                             ))}
                         </div>
-
                     </div>
-
-<<<<<<< HEAD
                 </motion.div>
-=======
-
-                </div>
->>>>>>> 3d721520c9a9ba9ba3b2051f1039fa44c65c64fc
 
                 <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.7 }}
-                 className='flex flex-col md:flex-row gap-6 h-[380px] w-full mt-6'>
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.7 }}
+                    className='flex flex-col md:flex-row gap-6 h-[380px] w-full mt-6'>
                     <div className={`w-full md:w-[70%] rounded-3xl overflow-y-scroll py-6 px-4 ${isDarkMode ? 'bg-zinc-800 text-white fade-in' : 'bg-zinc-100 text-black fade-out'}`}>
                         <div className='font-bold mb-1 ml-3'>Top Selling Products</div>
                         <table className="min-w-full table-auto text-left border-collapse">
