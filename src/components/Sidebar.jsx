@@ -1,5 +1,4 @@
 import { useState } from "react";
-import React from "react";
 import {
     FaChevronDown,
     FaChevronRight,
@@ -17,6 +16,7 @@ import {
     PiChatsTeardropDuotone
 } from "react-icons/pi";
 import { useAuth } from "./Context";
+import { motion, AnimatePresence } from 'framer-motion';
 
 const menus = {
     ProfileMenu: ['Overview', 'User Projects', 'Campaigns', 'Documents', 'Followers'],
@@ -32,29 +32,40 @@ function ExpandableMenu({ label, Icon, menuItems, activeTab, setActiveTab, isDar
     return (
         <li className="cursor-pointer">
             <div
-                className={`flex text-md py-2 pl-3 rounded-lg items-center transition-colors duration-300 ${isDarkMode ? 'hover:bg-zinc-700' : 'hover:bg-zinc-200'}`}
+                className={`flex text-md py-2 pl-3 rounded-lg items-center transition-colors duration-300 ${isDarkMode ? 'hover:bg-zinc-700 fade-in' : 'hover:bg-zinc-200 fade-out'}`}
                 onClick={() => setIsOpen(!isOpen)}
             >
                 <span className={`transition-transform duration-500 ${isOpen ? 'rotate-180' : ''}`}>
                     {isOpen ? (
-                        <FaChevronDown className={`text-${isDarkMode ? 'zinc-400' : 'zinc-500'}`} style={{ fontSize: '12px' }} />
+                        <FaChevronDown className={`text-${isDarkMode ? 'zinc-400 fade-in' : 'fade-out zinc-500'}`} style={{ fontSize: '12px' }} />
                     ) : (
-                        <FaChevronRight className={`text-${isDarkMode ? 'zinc-400' : 'zinc-500'}`} style={{ fontSize: '12px' }} />
+                        <FaChevronRight className={`text-${isDarkMode ? 'zinc-400 fade-in' : 'fade-out zinc-500'}`} style={{ fontSize: '12px' }} />
                     )}
                 </span>
-                <Icon className={`mx-2 text-${isDarkMode ? 'zinc-300' : 'zinc-800'}`} style={{ fontSize: '18px' }} />
-                <span className={`text-${isDarkMode ? 'zinc-300' : 'zinc-800'} text-md font-normal`}>{label}</span>
+                <Icon className={`mx-2 text-${isDarkMode ? 'zinc-300 fade-in' : 'fade-out zinc-800'}`} style={{ fontSize: '18px' }} />
+                <span className={`text-${isDarkMode ? 'zinc-300 fade-in' : 'fade-out zinc-800'} text-md font-normal`}>{label}</span>
             </div>
-            {isOpen && menuItems.map((item, index) => (
-                <ul key={index} className="text-md pl-6">
-                    <li
-                        className={`py-2 pl-4 cursor-pointer rounded-lg transition-colors duration-300 ${isDarkMode ? 'hover:bg-zinc-600' : 'hover:bg-zinc-300'} ${activeTab === item ? (isDarkMode ? 'active-tab-dark' : 'active-tab') : ''}`}
-                        onClick={() => setActiveTab(item)}
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.ul
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="text-md pl-6"
                     >
-                        {item}
-                    </li>
-                </ul>
-            ))}
+                        {menuItems.map((item, index) => (
+                            <motion.li
+                                key={index}
+                                className={`py-2 pl-4 cursor-pointer rounded-lg transition-colors duration-300 ${isDarkMode ? 'hover:bg-zinc-600 fade-in' : 'hover:bg-zinc-300'} ${activeTab === item ? (isDarkMode ? 'active-tab-dark' : 'active-tab') : ''}`}
+                                onClick={() => setActiveTab(item)}
+                            >
+                                {item}
+                            </motion.li>
+                        ))}
+                    </motion.ul>
+                )}
+            </AnimatePresence>
         </li>
     );
 }
@@ -72,11 +83,20 @@ export default function Sidebar() {
     const handleItemClickFavRecent = (item) => {
         setSelectedItem1(item);
     };
-    const [fade, setFade] = React.useState(false);
+    
+    const sidebarVariants = {
+        open: { width: '15rem', opacity: 1, transition: { duration: 0.5, ease: "easeInOut" } },
+        closed: { width: '0rem', opacity: 0, transition: { duration: 0.5, ease: "easeInOut" } },
+    };
 
     return (
-        <div>
-            <div className={`w-52 ${isLeftClose ? 'hidden' : 'block'} transition-bg ${isDarkMode ? 'bg-zinc-900 text-zinc-300 fade-in' : 'bg-white text-zinc-900 fade-out'} h-screen p-4 font-sans overflow-scroll transition-transform duration-300 md:translate-x-0 fixed md:static top-0 left-0 z-50 shadow-lg ${fade ? 'fade-out' : ''}`}>
+        <motion.div
+            variants={sidebarVariants}
+            initial="closed"
+            animate={isLeftClose ? "closed" : "open"}
+            className={`h-screen font-sans overflow-hidden ${isDarkMode ? 'bg-zinc-900 text-zinc-300 fade-in' : 'bg-white text-zinc-700 fade-out'}`}
+        >
+            <div className={`w-52 ${isLeftClose ? 'hidden' : 'block'} transition-bg ${isDarkMode ? 'bg-zinc-900 text-zinc-300 fade-in' : 'bg-white text-zinc-900 fade-out'} h-screen p-4 font-sans overflow-scroll transition-transform duration-300 md:translate-x-0 fixed md:static top-0 left-0 z-50 shadow-lg`}>
                 <div className="flex items-center mb-8">
                     <FaUserCircle size={30} className={`mr-2 text-${isDarkMode ? 'zinc-300' : 'zinc-800'}`} />
                     <p className={`font-medium text-lg`}>ByeWind</p>
@@ -87,14 +107,14 @@ export default function Sidebar() {
                         <div className="mb-4 ml-2">
                             <div className="flex mb-2">
                                 <button
-                                    className={`mr-4 ${activeTab1 === "Favorites" ? (isDarkMode ? 'text-zinc-100' : "text-zinc-400") : "text-zinc-300"}`}
+                                    className={`mr-4 ${activeTab1 === "Favorites" ? (isDarkMode ? 'text-zinc-100 fade-in' : "fade-out text-zinc-400") : "text-zinc-300"}`}
                                     onClick={() => setActiveTab1("Favorites")}
                                 >
                                     Favorites
                                 </button>
                                 <button
-                                    className={`${activeTab1 === "Recent" ? (isDarkMode ? 'text-zinc-100' : "text-zinc-400") : "text-zinc-300"}`}
-                                    onClick={() => setActiveTab1("Recent")}
+                                    className={`${activeTab1 === "Recent" ? (isDarkMode ? 'text-zinc-100 fade-in' : 'fade-out text-zinc-400') : "text-zinc-300 fade-in"}`}
+                                    onClick ={() => setActiveTab1("Recent")}
                                 >
                                     Recent
                                 </button>
@@ -105,13 +125,13 @@ export default function Sidebar() {
                                         key={item}
                                         onClick={() => handleItemClickFavRecent(item)}
                                         className={`flex items-center text-md py-2 pl-1 cursor-pointer transition-colors duration-200 ease-in-out ${selectedItem1 === item
-                                            ? (isDarkMode ? 'bg-zinc-950 text-white' : 'bg-zinc-100 text-black')
-                                            : (isDarkMode ? 'hover:bg-zinc-800 text-white' : 'hover:bg-zinc-200 text-zinc-500')
+                                            ? (isDarkMode ? 'bg-zinc-950 text-white fade-in' : 'fade-out bg-zinc-100 text-black')
+                                            : (isDarkMode ? 'hover:bg-zinc-800 text-white fade-in' : 'fade-out hover:bg-zinc-200 text-zinc-500')
                                         } rounded-lg`}
                                     >
                                         <span className={`rounded-full h-2 w-2 ${selectedItem1 === item ? (isDarkMode ? 'bg-zinc-300' : 'bg-zinc-700') : 'bg-zinc-300'} mr-2`}></span> {item}
                                     </li>
-                                ))} 
+                                ))}
                             </ul>
                         </div>
                     </div>
@@ -148,6 +168,6 @@ export default function Sidebar() {
                     </ul>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 }
