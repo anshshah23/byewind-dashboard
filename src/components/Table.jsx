@@ -137,7 +137,7 @@ const Table = () => {
                     previousClassName={'p-2 font-bold rounded'}
                     nextClassName={'p-2 font-bold rounded'}
                     breakClassName={'p-2'}
-                    activeClassName={`bg-zinc-200 text-zinc-900 ${isDarkMode ? 'bg-zinc-700' : 'bg-zinc-200'}`}
+                    activeClassName={`${isDarkMode ? 'bg-zinc-900 text-zinc-100 hover:bg-zinc-800' : 'bg-white text-zinc-900 hover:bg-zinc-300'}`}
                 />
             </div>
         </motion.div>
