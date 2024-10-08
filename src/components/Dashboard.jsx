@@ -72,6 +72,13 @@ export default function Dashboard() {
         { name: 'Lightweight Jacket', price: '$20.00', quantity: 184, amount: '$3680.00' },
         { name: 'Long Sleeve Shirt', price: '$25.50', quantity: 10, amount: '$255.00' },
         { name: 'Cotton T-Shirt', price: '$10.99', quantity: 184, amount: '$2023.16' },
+        { name: 'Lightweight Jacket', price: '$20.00', quantity: 184, amount: '$3680.00' },
+        { name: 'Long Sleeve Shirt', price: '$25.50', quantity: 10, amount: '$255.00' },
+        { name: 'Cotton T-Shirt', price: '$10.99', quantity: 184, amount: '$2023.16' },
+        { name: 'Lightweight Jacket', price: '$20.00', quantity: 184, amount: '$3680.00' },
+        { name: 'Long Sleeve Shirt', price: '$25.50', quantity: 10, amount: '$255.00' },
+        { name: 'Cotton T-Shirt', price: '$10.99', quantity: 184, amount: '$2023.16' },
+        { name: 'Lightweight Jacket', price: '$20.00', quantity: 184, amount: '$3680.00' },
     ];
 
     const PieChartdata = [
@@ -123,7 +130,7 @@ export default function Dashboard() {
                                     <Link
                                         to={data.link}
                                         key={index}
-                                        className={`${alternateColor} pt-8 px-6 h-[48%] rounded-3xl w-full md:w-[47%]`}
+                                        className={`${alternateColor} transition-transform duration-700 transform hover:scale-105 pt-8 px-6 h-[48%] rounded-3xl w-full md:w-[47%]`}
                                     >
                                         <div className="text-md font-bold">{data.name}</div>
                                         <div className="mt-4 flex justify-between items-center">
@@ -141,7 +148,7 @@ export default function Dashboard() {
                         </div>
 
 
-                        <div className={`w-full md:w-1/2 flex items-center rounded-3xl justify-center ${isDarkMode ? 'bg-zinc-800 text-white fade-in' : 'bg-zinc-100 text-zinc-900 fade-out'}`}>
+                        <div className={`transition-transform duration-700 transform hover:scale-105 w-full md:w-1/2 flex items-center rounded-3xl justify-center ${isDarkMode ? 'bg-zinc-800 text-white fade-in' : 'bg-zinc-100 text-zinc-900 fade-out'}`}>
                             <div className="py-6 px-2 rounded-md w-full">
                                 <h3 className="ml-4 text-start font-bold">Projections vs Actuals</h3>
                                 <div className="mt-4" style={{ height: 300 }}>
@@ -178,7 +185,7 @@ export default function Dashboard() {
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.7 }}
                     className='flex gap-6 h-[380px] w-full mt-6'>
-                    <div className={`w-[70%] rounded-3xl pt-8 pb-12 px-8 ${isDarkMode ? 'bg-zinc-800 text-white fade-in' : 'bg-zinc-100 text-zinc-900 fade-out'}`} style={{ height: "380px" }}>
+                    <div className={`transition-transform duration-700 transform hover:scale-105 w-[70%] rounded-3xl pt-8 pb-12 px-8 ${isDarkMode ? 'bg-zinc-800 text-white fade-in' : 'bg-zinc-100 text-zinc-900 fade-out'}`} style={{ height: "380px" }}>
                         <div className="flex items-center space-x-4 mb-4">
                             <h3 className={`font-bold ${isDarkMode ? 'text-white fade-in' : 'text-black fade-out'}`}>Revenue</h3>
                             <span className="h-6 border-l border-zinc-300"></span>
@@ -207,7 +214,7 @@ export default function Dashboard() {
                         </ResponsiveContainer>
                     </div>
 
-                    <div className={`w-[30%] h-full rounded-3xl py-6 px-4 ${isDarkMode ? 'bg-zinc-800 text-white fade-in' : 'bg-zinc-100 text-zinc-900 fade-out'}`}>
+                    <div className={`transition-transform duration-700 transform hover:scale-105 w-[30%] h-full rounded-3xl py-6 px-4 ${isDarkMode ? 'bg-zinc-800 text-white fade-in' : 'bg-zinc-100 text-zinc-900 fade-out'}`}>
                         <h6 className="text-md font-semibold text-center">Revenue by Location</h6>
 
                         <div className="relative w-full h-1/2 rounded-3xl overflow-hidden">
@@ -243,7 +250,7 @@ export default function Dashboard() {
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.7 }}
                     className='flex flex-col md:flex-row gap-6 h-[380px] w-full mt-6'>
-                    <div className={`w-full md:w-[70%] rounded-3xl overflow-y-scroll py-6 px-4 ${isDarkMode ? 'bg-zinc-800 text-white fade-in' : 'bg-zinc-100 text-black fade-out'}`}>
+                    <div className={`transition-transform duration-700 transform hover:scale-105 w-full md:w-[70%] rounded-3xl overflow-y-scroll py-6 px-4 ${isDarkMode ? 'bg-zinc-800 text-white fade-in' : 'bg-zinc-100 text-black fade-out'}`}>
                         <div className='font-bold mb-1 ml-3'>Top Selling Products</div>
                         <table className="min-w-full table-auto text-left border-collapse">
                             <thead>
@@ -269,7 +276,7 @@ export default function Dashboard() {
                         </table>
                     </div>
 
-                    <div className={`w-[30%] h-full rounded-3xl py-6 px-4 ${isDarkMode ? 'bg-zinc-800 text-white fade-in' : 'bg-zinc-100 text-black fade-out'}`}>
+                    <div className={`transition-transform duration-700 transform hover:scale-105 w-[30%] h-full rounded-3xl py-6 px-4 ${isDarkMode ? 'bg-zinc-800 text-white fade-in' : 'bg-zinc-100 text-black fade-out'}`}>
                         <div className='font-bold'>Total Sales</div>
                         <ResponsiveContainer width="100%" height={190}>
                             <PieChart>
@@ -280,7 +287,7 @@ export default function Dashboard() {
                                     innerRadius={60}
                                     outerRadius={80}
                                     fill="#8884d8"
-                                    paddingAngle={3}
+                                    paddingAngle={5}
                                     dataKey="value"
                                 >
                                     {PieChartdata.map((entry, index) => (

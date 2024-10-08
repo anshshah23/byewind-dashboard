@@ -40,57 +40,58 @@ export default function Header() {
 
     return (
         <div className={`w-full h-8 px-6 text-lg border-b-2 p-8 flex justify-between 
-            ${isDarkMode ? 'bg-zinc-900 border-zinc-700 text-white fade-in' : 'bg-white border-zinc-300 text-black fade-out'} 
+            ${isDarkMode ? 'bg-zinc-900 border-zinc-700 text-white fade-in' : 'bg-white border-zinc-300 fade-in text-black fade-out'} 
             ${fade ? 'fade-out' : ''}`}>
             <div className='flex items-center gap-x-5'>
                 <div>
                     {isLeftClose ? (
-                        <LuPanelRightClose onClick={() => setIsLeftClose(false)} />
+                        <LuPanelRightClose className="hover:text-yellow-300 fade-in" onClick={() => setIsLeftClose(false)} />
                     ) : (
-                        <LuPanelLeftClose onClick={() => setIsLeftClose(true)} />
+                        <LuPanelLeftClose className="hover:text-yellow-300 fade-in" onClick={() => setIsLeftClose(true)} />
                     )}
                 </div>                <IoStarOutline
                     onClick={handleClick}
-                    className={`cursor-pointer ${isDarkMode ? (isFilled ? 'text-yellow-500 fade-in' : 'text-white fade-in') : (isFilled ? 'text-yellow-500 fade-out' : 'text-zinc-900 fade-out')}`}
+                    className={`cursor-pointer hover:text-yellow-300     ${isDarkMode ? (isFilled ? 'text-yellow-500 fade-in' : 'text-white fade-in') : (isFilled ? 'text-yellow-500 fade-out' : 'text-zinc-900 fade-out')}`}
                     style={{ fontSize: '18px' }}
                 />
                 <span>
-                    <Link to='/' className={`${isDarkMode ? 'text-white fade-in' : 'text-black fade-out'}`}>Dashboards</Link>
+                    <Link to='/' className={`hover:text-yellow-300 fade-in ${isDarkMode ? 'text-white fade-in' : 'text-black fade-out'}`}>Dashboards</Link>
                 </span>
-                <span >/</span>
-                <span>Default</span>
+                <span>/</span>
+                <span className='hover:text-yellow-300 fade-in fade-in'>Default</span>
             </div>
             <div className='flex items-center gap-x-5'>
                 <div className="relative">
-                    <FaSearch className={`absolute top-3.5 left-2 ${isDarkMode ? 'text-zinc-300 fade-in' : 'text-zinc-400 fade-out'}`} />
+                    <FaSearch className={`absolute top-3.5 left-2 ${isDarkMode ? 'text-zinc-300 fade-in ' : 'text-zinc-400 fade-out'}`} />
                     <input
                         type="text"
                         placeholder="Search"
                         className={`pl-8 py-2 border rounded-lg w-15 
-                            ${isDarkMode ? 'bg-zinc-800 text-white border-zinc-600 fade-in' : 'bg-[#f8f9fb] text-black border-zinc-300 fade-out'}`}
+                            ${isDarkMode ? 'bg-zinc-800 text-white border-zinc-600 fade-in' : 'bg-[#f8f9fb] text-black border-zinc-300  fade-out'}`}
                     />
                 </div>
                 {
-                    isDarkMode ? <GoSun onClick={toggleDarkMode} className="cursor-pointer" /> :
-                        <GoSun onClick={toggleDarkMode} className="cursor-pointer" />
+                    isDarkMode ? <GoSun onClick={toggleDarkMode} className="cursor-pointer hover:text-yellow-300    " /> :
+                        <GoSun onClick={toggleDarkMode} className="cursor-pointer hover:text-yellow-300 " />
                 }
                 <FaClockRotateLeft
                     onClick={handleClockClick}
-                    className={`cursor-pointer transition-transform duration-200 ${rotate ? 'rotate-animation' : ''}`}
+                    className={`cursor-pointer hover:text-yellow-300     transition-transform duration-200 ${rotate ? 'rotate-animation' : ''}`}
                     style={{ fontSize: '16px' }}
                 />
                 <FaRegBell
                     onClick={handleBellClick}
-                    className={`cursor-pointer transition-transform duration-200 ${animate ? 'animate-bell' : ''}`}
+                    className={`cursor-pointer hover:text-yellow-300     transition-transform duration-200 ${animate ? 'animate-bell' : ''}`}
                     style={{ fontSize: '16px' }}
                 />
                 <div>
                     {isRightClose ? (
-                        <LuPanelLeftClose onClick={() => setIsRightClose(false)} />
+                        <LuPanelLeftClose className="hover:text-yellow-300 fade-in" onClick={() => setIsRightClose(false)} />
                     ) : (
-                        <LuPanelRightClose onClick={() => setIsRightClose(true)} />
+                        <LuPanelRightClose className="hover:text-yellow-300 fade-in" onClick={() => setIsRightClose(true)} />
                     )}
-                </div>            </div>
+                </div>
+            </div>
         </div>
     );
 }
